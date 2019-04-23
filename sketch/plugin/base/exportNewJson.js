@@ -1,11 +1,9 @@
-var app = [NSApplication sharedApplication];
 const sketch = require('sketch')
 const document = sketch.getSelectedDocument()
 // initialize the layer array
 var layerArray = []
 
 const selectedLayers = document.selectedLayers
-const  doc = context.document;
 const layer = selectedLayers.map( i => i )
 // create the variables
 var layerName = layer.map( i => i.name )
