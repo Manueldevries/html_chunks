@@ -1,4 +1,5 @@
-// https://gist.github.com/abynim/04fd575a7e63ae2908a9
+// var app = [NSApplication sharedApplication];
+// [app displayDialog:'hola' withTitle:"Yo!"];
 const sketch = require('sketch')
 const document = sketch.getSelectedDocument()
 const selectedLayers = document.selectedLayers
