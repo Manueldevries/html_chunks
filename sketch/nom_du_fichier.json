@@ -57,7 +57,7 @@
 		"width": 208
 	},
 	// yPos == next yPos et xPos != next xPos
-	// TR>TD_n1 * 2
+	// TR>TD_n1 * 2 
 	{
 		"name": "s3c1",
 		"xPos": 0,
