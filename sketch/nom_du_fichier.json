@@ -1,4 +1,5 @@
 [
+	// si yPos est unique
 	// TR>TD_n1
 	{
 		"name": "s1",
@@ -8,7 +9,9 @@
 		"width": 620
 	},
 	// TR>TD_n1
-	// si yPos=167 n'est pas unique et next yPos!=167 et xPos=next xPos alors :
+	// si yPos=167 n'est pas unique on créer un nouvel obj ou un sous obj
+	// puis on ajoute les obj qui ont le même xPos jusqu'au suivant yPos indentique
+	// et next yPos!=167 et xPos=next xPos alors :
 	// table > tr > td*2 (s2c1s1 + s2c1s2 == xPos)
 	{
 		"name": "s2c1s1",
@@ -73,3 +76,18 @@
 		"width": 278
 	}
 ]
+
+// 1- get unique
+// const unique = [...new Set(array.map(item => item.yPos))];
+// output [0, 167, 218, 276, 330 ]
+// verifier chaque next d'obj item.yPos unqiue
+// const all = [...new Set( array.map( (item,idx) => [item.yPos, item.xPos] ) )];
+// ouput:
+// [
+// [0, 0 ],
+// nested[167, 0 ], [218, 0 ],
+// nested[167, 158 ],
+// nested[167, 412 ], [218, 412 ], [276, 412 ],
+// [330, 0 ], [330, 342 ]
+// ]
+
