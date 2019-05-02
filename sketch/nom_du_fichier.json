@@ -1,4 +1,5 @@
 [
+	// TR>TD_n1
 	{
 		"name": "s1",
 		"xPos": 0,
@@ -6,6 +7,9 @@
 		"height": 167,
 		"width": 620
 	},
+	// TR>TD_n1
+	// si yPos=167 n'est pas unique et next yPos!=167 et xPos=next xPos alors :
+	// table > tr > td*2 (s2c1s1 + s2c1s2 == xPos)
 	{
 		"name": "s2c1s1",
 		"xPos": 0,
@@ -20,6 +24,8 @@
 		"height": 112,
 		"width": 158
 	},
+	// si yPos:167 et xPos != to next xPos :
+	//    tr > td*1  (s2c2 xPos unique)
 	{
 		"name": "s2c2",
 		"xPos": 158,
@@ -27,27 +33,30 @@
 		"height": 163,
 		"width": 254
 	},
+	// si yPos:167 et xPos == next xPos == next xPos
+	//    tr*3 > td (s2c3s1 + s2c3s2 + s2c3s3 == xPos:412)
 	{
-		"name": "s2c2s1",
+		"name": "s2c3s1",
 		"xPos": 412,
 		"yPos": 167,
 		"height": 51,
 		"width": 208
 	},
 	{
-		"name": "s2c2s2",
+		"name": "s2c3s2",
 		"xPos": 412,
 		"yPos": 218,
 		"height": 58,
 		"width": 208
 	},
 	{
-		"name": "s2c2s3",
+		"name": "s2c3s3",
 		"xPos": 412,
 		"yPos": 276,
 		"height": 54,
 		"width": 208
 	},
+	// TR>TD_n1 * 2
 	{
 		"name": "s3c1",
 		"xPos": 0,
