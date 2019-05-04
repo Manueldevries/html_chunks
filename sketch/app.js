@@ -12,7 +12,7 @@ const rest = (a,b,...arg) => a +'\n'+ b+'\n'+ arg
 let tr = (curr,next) => curr === next ? 'tr>'+ curr : 'rien'
 
 var result = array.filter( (elt, eltIndex) => 
-  array.some((sameY_Elt, sameY_EltIndex) => sameY_Elt.yPos === elt.yPos && sameY_EltIndex !== eltIndex));
+  array.some((sameElt, sameEltIndex) => sameElt.yPos === elt.yPos && sameElt.xPos !== elt.xPos && sameEltIndex !== eltIndex));
 
 
 console.log(
