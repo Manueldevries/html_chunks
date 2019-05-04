@@ -9,12 +9,22 @@ const test = [...array]
 const bs = '&nbsp;'
 // const rest = (...arg) => arg+'____\n'
 const rest = (a,b,...arg) => a +'\n'+ b+'\n'+ arg
-let tr = (curr,next) => curr[0] === next[0] && curr[1] !== next[1] ?  'tr>'+curr[1] : 'rien'
+let tr = (curr,next) => curr === next ? 'tr>'+ curr : 'rien'
+
+var result = array.filter( (elt, eltIndex) => 
+  array.some((sameY_Elt, sameY_EltIndex) => sameY_Elt.yPos === elt.yPos && sameY_EltIndex !== eltIndex));
+
 
 console.log(
-  `${ test.map( (item,idx,ary)=> {
-        return ary[idx+1] ?
-          tr([ary[idx].xPos,ary[idx].yPos], [ary[idx+1].xPos,ary[idx+1].yPos])
-          : 'END'
-      } )}`
-)
+  result.map(item=>item.name)
+);
+
+// console.log(
+//   `${ test.map( (item,idx,ary)=> {
+//         if(ary[idx+1] ){
+//           // return tr(ary[idx].xPos, ary[idx+1].xPos)
+//           return item.name
+//         }else return `END::${item.name}`
+//       }
+//         )}`
+// )
