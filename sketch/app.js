@@ -9,13 +9,12 @@ const test = [...array]
 const bs = '&nbsp;'
 // const rest = (...arg) => arg+'____\n'
 const rest = (a,b,...arg) => a +'\n'+ b+'\n'+ arg
-// const rest = (idx,...arg) => arg[idx]+'____\n'
+let tr = (curr,next) => curr[0] === next[0] && curr[1] !== next[1] ?  'tr>'+curr[1] : 'rien'
 
 console.log(
   `${ test.map( (item,idx,ary)=> {
-        // return [item.yPos,item.xPos]+' : '
-        // return ary[idx+1] ? ary[idx+1].name : 'empty'
-        // return ary[idx].name+ rest() +'\n'
-        return ary[idx+1] ? (ary[idx].yPos === ary[idx+1].yPos ? ary[idx].yPos : `::${ary[idx].yPos}`) : 'END'
+        return ary[idx+1] ?
+          tr([ary[idx].xPos,ary[idx].yPos], [ary[idx+1].xPos,ary[idx+1].yPos])
+          : 'END'
       } )}`
 )
