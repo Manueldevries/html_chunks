@@ -14,21 +14,19 @@ var array = [
     { 'name': 's3c2', 'xPos': 342, 'yPos': 330, 'width': 278 },
   { 'name': 's4', 'xPos': 0, 'yPos': 672, 'width': 620 }
 ]
-const acc = (oldWidth, curWidth) => oldWidth + curWidth
+const acc = (curWidth, oldWidth) => curWidth + oldWidth
 
 const newAry = []
 let unique = array.map( (item,idx,ary) => {
   if(ary[idx+1]){
     if( item.xPos === 0 && item.width === 620  ){
       newAry.push([{'single': item.name}])
-      // ary.shift(ary[idx])
-    }else if( item.width < 620 ) {
+    }else if( item.width < 620 && item.xPos !== ary[idx+1].xPos ) {
+      console.log(item.name,acc(item.width, ary[idx+1].width))
       newAry.push([{'nested': item.name}])
-      console.log(idx+': ',ary[idx])
     }
   } else if (item.xPos === 0 && item.width === 620){
     newAry.push([{'single': item.name}])
-    // ary.shift(ary[idx])
   }else{
     console.log('END')
   }
