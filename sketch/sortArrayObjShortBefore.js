@@ -23,22 +23,23 @@ const newAry = []
 let unique = array.map( (item,idx,ary) => {
   if(ary[idx+1]){
     if( item.xPos === 0 && item.width === 620  ){
+      console.log('single: '+item.name);
       newAry.push([{'single': item.name}])
     }else if( item.width < 620 && item.xPos !== ary[idx+1].xPos && ary[idx+1].xPos > 0  ) {
       acc_+item.width < 620 ? acc_ += item.width : acc_ = 0
-      // acc_ += item.width
-      // console.log(item.name, item.width,'+',ary[idx+1].width , acc(item.width, ary[idx+1].width))
-      console.log(item.name, acc_,'+',ary[idx+1].width , acc(acc_, ary[idx+1].width))
+      // console.log(item.name, acc_,'+',ary[idx+1].width , acc(acc_, ary[idx+1].width))
+      console.log('tr>td>'+item.name);
       newAry.push([{'nested': item.name}])
     }else{
       acc_ = 0
-      console.log(item.name, acc_,'+',ary[idx+1].width , acc(acc_, ary[idx+1].width))
+      console.log('tr>td>table>tr>td>'+'\ntr>td>'+item.name)
       newAry.push([{'nested': item.name}])
     }
   } else if (item.xPos === 0 && item.width === 620){
     newAry.push([{'single': item.name}])
   }else{
     console.log('END')
+    newAry.push([{'nested': item.name}])
   }
 });
 
