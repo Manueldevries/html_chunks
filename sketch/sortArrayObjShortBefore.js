@@ -27,12 +27,23 @@ let unique = array.map( (item,idx,ary) => {
       newAry.push([{'single': item.name}])
     }else if( item.width < 620 && item.xPos !== ary[idx+1].xPos && ary[idx+1].xPos > 0  ) {
       acc_+item.width < 620 ? acc_ += item.width : acc_ = 0
-      // console.log(item.name, acc_,'+',ary[idx+1].width , acc(acc_, ary[idx+1].width))
-      console.log('tr>td>'+item.name);
+      if(item.yPos !== ary[idx+1].yPos){
+        console.log('tr>'+item.name)
+      }else if(item.xPos === ary[idx-1].width){
+        console.log('td__>'+item.name);
+      }else{
+        console.log('td>'+item.name);
+      }
       newAry.push([{'nested': item.name}])
     }else{
       acc_ = 0
-      console.log('tr>td>table>tr>td>'+'\ntr>td>'+item.name)
+      if(item.yPos !== ary[idx+1].yPos ){
+        if(item.width !== ary[idx-1].width){
+          console.log(`${idx}: ${item.name} `)
+        }else{
+          console.log(`tr>: ${item.name} `)
+        }
+      }
       newAry.push([{'nested': item.name}])
     }
   } else if (item.xPos === 0 && item.width === 620){
