@@ -11,12 +11,15 @@ var array = [
 ]
 
 const distinct = array.map(item => item.yPos)
+  .filter((value, index, self) => value==index)
   // .filter((value, index, self) => self.indexOf(value) === index)
-  .filter((value, index, self) => self)
 
-console.log(distinct.slice(0,1));
-console.log(distinct.slice(1,3));
-console.log(distinct.slice(3,4));
+console.log(distinct);
+
 // self -> [ 0, 167, 218, 167, 167, 218, 276, 330, 330 ]
 // result:
 // [ [0], [[167, 218], [167], [167, 218, 276]], [330, 330] ]
+
+// console.log(distinct.slice(0,1));
+// console.log(distinct.slice(1,3));
+// console.log(distinct.slice(3,4));
