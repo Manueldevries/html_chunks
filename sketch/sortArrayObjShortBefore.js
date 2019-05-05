@@ -14,7 +14,7 @@ var array = [
     { 'name': 's3c2', 'xPos': 342, 'yPos': 330, 'width': 278 },
   { 'name': 's4', 'xPos': 0, 'yPos': 672, 'width': 620 }
 ]
-var acc_ = 0
+let acc_ = 0;
 const acc = (acc_, nextWidth) => {
   return acc_ + nextWidth
 }
@@ -24,15 +24,16 @@ let unique = array.map( (item,idx,ary) => {
   if(ary[idx+1]){
     if( item.xPos === 0 && item.width === 620  ){
       newAry.push([{'single': item.name}])
-    }else if( item.width < 620 && item.xPos !== ary[idx+1].xPos ) {
+    }else if( item.width < 620 && item.xPos !== ary[idx+1].xPos && ary[idx+1].xPos > 0  ) {
       acc_+item.width < 620 ? acc_ += item.width : acc_ = 0
-      console.log(`acc_:${acc_}`);
       // acc_ += item.width
       // console.log(item.name, item.width,'+',ary[idx+1].width , acc(item.width, ary[idx+1].width))
       console.log(item.name, acc_,'+',ary[idx+1].width , acc(acc_, ary[idx+1].width))
       newAry.push([{'nested': item.name}])
     }else{
       acc_ = 0
+      console.log(item.name, acc_,'+',ary[idx+1].width , acc(acc_, ary[idx+1].width))
+      newAry.push([{'nested': item.name}])
     }
   } else if (item.xPos === 0 && item.width === 620){
     newAry.push([{'single': item.name}])
