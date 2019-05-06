@@ -22,6 +22,7 @@ const arySameY = []
 array.map(item=>newAry.push(item))
 let unique = array.map( (item,idx,ary) => {
   if(ary[idx+1]){
+<<<<<<< HEAD
     if( item.xPos === 0 && item.width === 620  ){
       countTR+=1
       console.log('single: '+item.name);
@@ -41,5 +42,18 @@ let unique = array.map( (item,idx,ary) => {
     }
   }else{
     console.log('END>'+'single: '+item.name)
+=======
+    if (item.xPos === 0 && item.width === 620){
+      console.log(item.name);
+    }else{
+      console.log(
+        newAry.length,
+        newAry.map(item=>item.name)
+        ,'________' );
+      newAry.shift()
+    }
+  }else{
+    console.log('END>'+item.name)
+>>>>>>> shift() TODO show how same first yPos.length
   }
 });
