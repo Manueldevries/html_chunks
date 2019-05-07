@@ -16,6 +16,7 @@ var array = [
 ]
 let acc_ = 0; let count = 0; let countTR = 0;
 const acc = (acc_, nextWidth) => acc_ + nextWidth
+function compareY(y, item) { return y === item.yPos; }
 
 const newAry = []
 const arySameY = []
@@ -45,10 +46,12 @@ let unique = array.map( (item,idx,ary) => {
 =======
     if (item.xPos === 0 && item.width === 620){
       console.log(item.name);
+      newAry.shift()
     }else{
       console.log(
-        newAry.length,
-        newAry.map(item=>item.name)
+        newAry.length
+        ,newAry.map(item=>item.name)
+        ,newAry.some( compareY )
         ,'________' );
       newAry.shift()
     }
