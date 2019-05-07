@@ -31,14 +31,12 @@ let unique = array.map( (item,idx,ary) => {
         newAry[0].yPos
         , newAry[0].name
         , yPosAry
-        , yPosAry.indexOf( newAry[0].yPos )
+        , yPosAry.map(item => item === newAry[0].yPos )
       );
-      // console.log(object);
       // while( ( ind = newAry.indexOf( newAry[0].yPos ) ) != -1 ){
       //   results.push( ind + results.length )
       //   newAry.splice( ind, 1 )
       // }
-      // console.log(results);
       newAry.shift()
     }
   }else{
