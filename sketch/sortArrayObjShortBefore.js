@@ -16,51 +16,21 @@ var array = [
 ]
 let acc_ = 0; let count = 0; let countTR = 0;
 const acc = (acc_, nextWidth) => acc_ + nextWidth
-// function compareY(y, item) { return y === item.yPos; }
-function compareY(y, item) { return y === item.yPos; }
 
 const newAry = []
 const arySameY = []
 array.map(item=>newAry.push(item))
-let unique = array.map( (item,idx,ary) => {
-  if(ary[idx+1]){
-<<<<<<< HEAD
-    if( item.xPos === 0 && item.width === 620  ){
-      countTR+=1
-      console.log('single: '+item.name);
-      newAry.shift()
-    }else{
-      const yPosAry = newAry.map(item => item.yPos)
-      // arySameY.push([yPosAry.map(item => item === newAry[0].yPos )])
-      arySameY.push( yPosAry.map(item_ => item_ === newAry[0].yPos) )
-      console.log(
-        `newAry[0].yPos: ${newAry[0].yPos} `
-        , `newAry[0].name: ${newAry[0].name}\n `
-        , `yPosAry: ${yPosAry}\n `
-        , `arySameY: ${arySameY[idx-1]} `
-      )
-
-      newAry.shift()
-    }
+array.map( (item,idx,ary) => {
+  if( item.xPos === 0 && item.width === 620  ){
+    countTR+=1
+    console.log('single: '+item.name);
+    newAry.shift()
   }else{
-    console.log('END>'+'single: '+item.name)
-=======
-    if (item.xPos === 0 && item.width === 620){
-      console.log(item.name);
-      newAry.shift()
-    }else{
-      const aryY = []
-      const valueY = newAry.map(item=>item.yPos)
-      valueY.push(newAry.some( (item, idx) => valueY.indexOf(item) != idx))
-      console.log(
-        newAry.length
-        ,newAry.map(item=>item.name)
-        ,valueY
-        ,'________' );
-      newAry.shift()
-    }
-  }else{
-    console.log('END>'+item.name)
->>>>>>> shift() TODO show how same first yPos.length
+    const yPosAry = newAry.map(item => item.yPos)
+    // arySameY.push([yPosAry.map(item => item === newAry[0].yPos )])
+    arySameY.push( yPosAry.map(item_ => item_ === newAry[0].yPos) )
+    newAry.shift()
   }
 });
+
+arySameY.map(item=>console.log(item))
