@@ -28,12 +28,12 @@ let unique = array.map( (item,idx,ary) => {
       newAry.shift()
     }else{
       const yPosAry = newAry.map(item => item.yPos)
-      arySame.push(yPosAry.map(item => item === newAry[0].yPos ))
+      arySame.push([yPosAry.map(item => item === newAry[0].yPos )])
       console.log(
-        newAry[0].yPos
-        , newAry[0].name
-        , yPosAry
-        , '###'+arySame
+        `newAry[0].yPos: ${newAry[0].yPos} `
+        , `newAry[0].name: ${newAry[0].name}\n `
+        , `yPosAry: ${yPosAry}\n `
+        , `arySame: ${arySame[idx-1]} `
       )
 
       newAry.shift()
