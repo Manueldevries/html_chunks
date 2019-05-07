@@ -16,6 +16,7 @@ var array = [
 ]
 let acc_ = 0; let count = 0; let countTR = 0;
 const acc = (acc_, nextWidth) => acc_ + nextWidth
+// function compareY(y, item) { return y === item.yPos; }
 function compareY(y, item) { return y === item.yPos; }
 
 const newAry = []
@@ -48,10 +49,13 @@ let unique = array.map( (item,idx,ary) => {
       console.log(item.name);
       newAry.shift()
     }else{
+      const aryY = []
+      const valueY = newAry.map(item=>item.yPos)
+      valueY.push(newAry.some( (item, idx) => valueY.indexOf(item) != idx))
       console.log(
         newAry.length
         ,newAry.map(item=>item.name)
-        ,newAry.some( compareY )
+        ,valueY
         ,'________' );
       newAry.shift()
     }
