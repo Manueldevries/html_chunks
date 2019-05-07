@@ -15,41 +15,33 @@ var array = [
   { 'name': 's4', 'xPos': 0, 'yPos': 672, 'width': 620 }
 ]
 let acc_ = 0; let count = 0; let countTR = 0;
-const acc = (acc_, nextWidth) => {
-  return acc_ + nextWidth
-}
+const acc = (acc_, nextWidth) => acc_ + nextWidth
 
 const newAry = []
+array.map(item=>newAry.push(item))
 let unique = array.map( (item,idx,ary) => {
   if(ary[idx+1]){
     if( item.xPos === 0 && item.width === 620  ){
       countTR+=1
       console.log('single: '+item.name);
-    }else if( item.width < 620 && item.xPos !== ary[idx+1].xPos && ary[idx+1].xPos > 0  ) {
-      acc_+item.width < 620 ? acc_ += item.width : acc_ = 0
-      if(item.yPos !== ary[idx+1].yPos){
-        console.log('tr>'+item.name)
-      }else if(item.xPos === ary[idx-1].width){
-        console.log('td__>'+item.name);
-      }else{
-        console.log('td>'+item.name);
-      }
+      newAry.shift()
     }else{
-      countTR+=1
-      acc_ = 0
-      if(item.yPos !== ary[idx+1].yPos ){
-        if(item.width !== ary[idx-1].width){
-          count+=1
-          console.log(`nest_${count}${'\n'}tr>${item.name} `)
-        }else{
-          console.log(`tr>: ${item.name} `)
-        }
-      }
+      const yPosAry = newAry.map(item => item.yPos)
+      console.log(
+        newAry[0].yPos
+        , newAry[0].name
+        , yPosAry
+        , yPosAry.indexOf( newAry[0].yPos )
+      );
+      // console.log(object);
+      // while( ( ind = newAry.indexOf( newAry[0].yPos ) ) != -1 ){
+      //   results.push( ind + results.length )
+      //   newAry.splice( ind, 1 )
+      // }
+      // console.log(results);
+      newAry.shift()
     }
-
-  } else if (item.xPos === 0 && item.width === 620){
-    console.log(item.name);
   }else{
-    console.log('END')
+    console.log('END>'+'single: '+item.name)
   }
 });
