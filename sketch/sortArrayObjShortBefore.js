@@ -18,6 +18,7 @@ let acc_ = 0; let count = 0; let countTR = 0;
 const acc = (acc_, nextWidth) => acc_ + nextWidth
 
 const newAry = []
+const arySame = []
 array.map(item=>newAry.push(item))
 let unique = array.map( (item,idx,ary) => {
   if(ary[idx+1]){
@@ -27,16 +28,14 @@ let unique = array.map( (item,idx,ary) => {
       newAry.shift()
     }else{
       const yPosAry = newAry.map(item => item.yPos)
+      arySame.push(yPosAry.map(item => item === newAry[0].yPos ))
       console.log(
         newAry[0].yPos
         , newAry[0].name
         , yPosAry
-        , yPosAry.map(item => item === newAry[0].yPos )
-      );
-      // while( ( ind = newAry.indexOf( newAry[0].yPos ) ) != -1 ){
-      //   results.push( ind + results.length )
-      //   newAry.splice( ind, 1 )
-      // }
+        , '###'+arySame
+      )
+
       newAry.shift()
     }
   }else{
