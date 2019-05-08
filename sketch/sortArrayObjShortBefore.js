@@ -31,7 +31,8 @@ array.map( (item,idx,ary) => {
     const yPosAry = newAry.map(item => item.yPos)
     const xPosAry = newAry.map(item => item.xPos)
     // arySameY.push([yPosAry.map(item => item === newAry[0].yPos )])
-    console.log(xPosAry.findIndex(findZero));
+    console.log(item.xPos === 0 ? item.name : 'next');
+    console.log(xPosAry.findIndex(findZero)+': '+item.name);
     
     arySameY.push( yPosAry.map(item_ => item_ === newAry[0].yPos) )
     newAry.shift()
