@@ -16,21 +16,26 @@ var array = [
 ]
 let acc_ = 0; let count = 0; let countTR = 0;
 const acc = (acc_, nextWidth) => acc_ + nextWidth
-
+function findZero(elt){return elt === 0}
 const newAry = []
 const arySameY = []
+const aryZeroX = []
 array.map(item=>newAry.push(item))
 array.map( (item,idx,ary) => {
   if( item.xPos === 0 && item.width === 620  ){
     countTR+=1
     console.log('single: '+item.name);
+    newAry.push([item.name])
     newAry.shift()
   }else{
     const yPosAry = newAry.map(item => item.yPos)
+    const xPosAry = newAry.map(item => item.xPos)
     // arySameY.push([yPosAry.map(item => item === newAry[0].yPos )])
+    console.log(xPosAry.findIndex(findZero));
+    
     arySameY.push( yPosAry.map(item_ => item_ === newAry[0].yPos) )
     newAry.shift()
   }
 });
-
-arySameY.map(item=>console.log(item))
+// newAry.map( item=>console.log(item) )
+// arySameY.map(item=>console.log(item))
