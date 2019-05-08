@@ -11,16 +11,10 @@ var array = [
   { name: 's4', xPos: 0, yPos: 672, width: 620 },
 ]
 
-const y = [true, false, true, true, false, false, false, false, false, false]
-const x1 = [true, true, false, false, false, false, true, false, true, false]
-const x2 = [true, false, false, false, false, true, false, true, false]
-const x3 = [true, false, false, false, false, false, false, false]
-const x4 = [true, true, true, false, false, false, false]
-
 const newAry = []
 const arySameY = []
 const arySameX = []
-const xPosAry = []
+let xPosAry_ = []
 // const aryZeroX = []
 array.map(item => newAry.push(item))
 array.map((item, idx, ary) => {
@@ -31,7 +25,8 @@ array.map((item, idx, ary) => {
       newAry.shift()
     } else {
       const yPosAry = newAry.map(item => item.yPos)
-      const xPosAry = newAry.map(item =>
+      xPosAry_.push(item.xPos)
+      xPosAry = newAry.map(item =>
         item.xPos !== undefined ? item.xPos : 'close'
       )
 
@@ -41,10 +36,6 @@ array.map((item, idx, ary) => {
     }
   }
 })
-
-// arySameY.map(item => console.log(`itemY: ${item}`))
-// arySameX.map(item => console.log(`itemX: ${item}`))
-
 // fn get max of array
 const arrayMax = arr => arr.reduce((p, v) => (p > v ? p : v))
 // create first y array
@@ -52,10 +43,15 @@ var yIdx = []
 arySameY[0].filter((elem, index, array) =>
   elem ? yIdx.push(index) : yIdx.push(-1)
 )
+// console.log(arySameX[3].splice(0, arySameX[3].indexOf(false)))
+// //1-> ${arySameX[1].splice(0, arySameX[1].indexOf(false))}
+// ${arySameX.map((ary, idx) => ary.splice(0, ary.indexOf(false)) + '\n' + ary)}
 
 console.log(`
-${arySameX[0].splice(0, arySameX[0].indexOf(false))}
+
 ${yIdx.splice(0, yIdx.indexOf(arrayMax(yIdx)) + 1)}
-// ${y.splice(0, 4)},
-${yIdx}
+${arySameX.length}
+${array[3].name}
+${xPosAry_.map((x, idx, ary) => `x:${x}\n `)}
 `)
+// ${yIdx}
