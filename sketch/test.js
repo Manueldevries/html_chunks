@@ -12,31 +12,10 @@ var array = [
 ]
 
 const newAry = []
-const arySameY = []
-const arySameX = []
-let xPosAry_ = []
 const yPosAry = array.map(item => item.yPos)
+const yPosAry_ = array.map(item => item.yPos)
 // const aryZeroX = []
 array.map(item => newAry.push(item))
-array.map((item, idx, ary) => {
-  if (ary[idx + 1]) {
-    if (item.xPos === 0 && item.width === 620) {
-      console.log('single: ' + item.name)
-      newAry.push([item.name])
-      newAry.shift()
-      // yPosAry.shift()
-    } else {
-      xPosAry_.push(item.xPos)
-      xPosAry = newAry.map(item =>
-        item.xPos !== undefined ? item.xPos : 'close'
-      )
-
-      arySameY.push(yPosAry.map(item_ => item_ === newAry[0].yPos))
-      arySameX.push(xPosAry.map(item_ => item_ === newAry[0].xPos))
-      newAry.shift()
-    }
-  }
-})
 // fn get max of array
 const arrayMax = arr => arr.reduce((p, v) => (p > v ? p : v))
 const arrayMin = arr => arr.reduce((p, v) => (p < v ? p : v))
@@ -45,21 +24,29 @@ function arySortIdx(ary, minY) {
   var aryYindex = []
   ary.filter(function(elem, index, array) {
     if (elem == minY) {
-      aryYindex.push(index)
+      aryYindex.push([index])
     }
   })
   return aryYindex
 }
-const a = arySortIdx(yPosAry, 330)
-// var aryYindex = []
-// yPosAry.filter(function(elem, index, array) {
-//   if (elem == 167) {
-//     aryYindex.push(index)
-//   }
-// })
-// console.log(aryYindex)
+
+const a = arySortIdx(yPosAry, arrayMin(yPosAry))
+const a_ = yPosAry.splice(0, parseInt(a[a.length - 1]) + 1)
+console.log(`
+yPosAry_: ${yPosAry_}\n
+indexY:${a}\n slice:${a_}\n reste:${yPosAry}
+`)
+
+const b = arySortIdx(yPosAry, arrayMin(yPosAry))
+const b_ = yPosAry.splice(0, parseInt(b[b.length - 1]) + 1)
 
 console.log(`
- ${yPosAry},\n ${a}
+indexY:${b}\n slice:${b_}\n reste:${yPosAry}
 `)
-// ${yIdx}
+
+const c = arySortIdx(yPosAry, 330)
+const c_ = yPosAry.splice(0, parseInt(c[c.length - 1]) + 1)
+
+console.log(`
+indexY:${c}\n slice:${c_}\n reste:${yPosAry}
+`)
