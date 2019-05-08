@@ -21,7 +21,7 @@ function findZero(elt){return elt === 0}
 const newAry = []
 const arySameY = []
 const xPosAry = []
-const aryZeroX = []
+// const aryZeroX = []
 array.map(item=>newAry.push(item))
 array.map( (item,idx,ary) => {
   if(ary[idx+1]){
@@ -30,11 +30,11 @@ array.map( (item,idx,ary) => {
       newAry.push([item.name]); newAry.shift()
     }else{
       const yPosAry = newAry.map(item => item.yPos)
-      const xPosAry = newAry.map(item => item.xPos !== undefined ? item.xPos : 'null')
+      const xPosAry = newAry.map(item => item.xPos !== undefined ? item.xPos : 'close')
 
       console.log(xPosAry.findIndex(findZero)+': '+item.name)
-      // console.log(`[...xPosAry]: ${[...xPosAry]}`);
-      console.log([...xPosAry]);
+      console.log(`[...xPosAry]: ${[...xPosAry]}`);
+      
 
       // arySameY.push([yPosAry.map(item => item === newAry[0].yPos )])
       arySameY.push( yPosAry.map(item_ => item_ === newAry[0].yPos) )
