@@ -15,6 +15,7 @@ const newAry = []
 const arySameY = []
 const arySameX = []
 let xPosAry_ = []
+const yPosAry = array.map(item => item.yPos)
 // const aryZeroX = []
 array.map(item => newAry.push(item))
 array.map((item, idx, ary) => {
@@ -23,8 +24,8 @@ array.map((item, idx, ary) => {
       console.log('single: ' + item.name)
       newAry.push([item.name])
       newAry.shift()
+      // yPosAry.shift()
     } else {
-      const yPosAry = newAry.map(item => item.yPos)
       xPosAry_.push(item.xPos)
       xPosAry = newAry.map(item =>
         item.xPos !== undefined ? item.xPos : 'close'
@@ -38,20 +39,27 @@ array.map((item, idx, ary) => {
 })
 // fn get max of array
 const arrayMax = arr => arr.reduce((p, v) => (p > v ? p : v))
-// create first y array
-var yIdx = []
-arySameY[0].filter((elem, index, array) =>
-  elem ? yIdx.push(index) : yIdx.push(-1)
-)
-// console.log(arySameX[3].splice(0, arySameX[3].indexOf(false)))
-// //1-> ${arySameX[1].splice(0, arySameX[1].indexOf(false))}
-// ${arySameX.map((ary, idx) => ary.splice(0, ary.indexOf(false)) + '\n' + ary)}
+const arrayMin = arr => arr.reduce((p, v) => (p < v ? p : v))
+// array sort index same value
+function arySortIdx(ary, minY) {
+  var aryYindex = []
+  ary.filter(function(elem, index, array) {
+    if (elem == minY) {
+      aryYindex.push(index)
+    }
+  })
+  return aryYindex
+}
+const a = arySortIdx(yPosAry, 330)
+// var aryYindex = []
+// yPosAry.filter(function(elem, index, array) {
+//   if (elem == 167) {
+//     aryYindex.push(index)
+//   }
+// })
+// console.log(aryYindex)
 
 console.log(`
-
-${yIdx.splice(0, yIdx.indexOf(arrayMax(yIdx)) + 1)}
-${arySameX.length}
-${array[3].name}
-${xPosAry_.map((x, idx, ary) => `x:${x}\n `)}
+ ${yPosAry},\n ${a}
 `)
 // ${yIdx}
