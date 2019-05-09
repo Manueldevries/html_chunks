@@ -12,11 +12,11 @@ var array = [
 ]
 
 const newAry = []
+array.map(item => newAry.push(item))
 const yPosAry = array.map(item => item.yPos)
 const yPosAry_ = array.map(item => item.yPos)
-const count = 0
-var aryYindex = []
-array.map(item => newAry.push(item))
+const result = []
+const aryYindex = []
 // fn get max of array
 const arrayMax = arr => arr.reduce((p, v) => (p > v ? p : v))
 const arrayMin = arr => arr.reduce((p, v) => (p < v ? p : v))
@@ -27,10 +27,9 @@ const arySortIdx = (ary, minY) => {
       aryYindex.push(index)
     }
   })
-  // console.log(aryYindex.splice(0, parseInt(aryYindex[aryYindex.length - 1]) + 1),'yolooo');
-  console.log(aryYindex);
-  aryYindex.splice(0, parseInt(aryYindex[aryYindex.length - 1]) )
-  return aryYindex
+  // console.log(aryYindex);
+  result.push(aryYindex.splice(0, parseInt(aryYindex[aryYindex.length - 1]) + 1 ))
+  // aryYindex.splice(0, parseInt(aryYindex[aryYindex.length - 1]) + 1 )
 }
 
 arySortIdx(yPosAry, arrayMin(yPosAry))
@@ -38,3 +37,4 @@ arySortIdx(yPosAry, 167)
 arySortIdx(yPosAry, 330)
 arySortIdx(yPosAry, 672)
 
+console.log( result.map(it => `${it} `) );
