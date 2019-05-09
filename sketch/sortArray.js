@@ -41,6 +41,11 @@ const arySortIdx = (ary, minY) => {
 
 arySortIdx(yPosAry, arrayMin(yPosAry))
 console.log( result.map(it => `${it}`) );
+console.log(`
+${
+  array.map( (i,x) => [i.yPos,i.xPos]+'\n' )
+}
+`);
 arySortIdx(yPosAry, 167)
 console.log( result.map(it => `${it}`) );
 arySortIdx(yPosAry, 330)
