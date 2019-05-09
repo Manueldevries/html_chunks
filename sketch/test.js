@@ -30,7 +30,7 @@ const arySortIdx = (ary, minY) => {
       aryYindex.push(index)
     }
   })
-  yPosAry.shift() // Ooooops :(
+  // yPosAry.shift() // Ooooops :(
   // console.log(aryYindex);
   return result.push(aryYindex.splice(0, parseInt(aryYindex[aryYindex.length - 1]) + 1 ))
   // return [...aryYindex]
