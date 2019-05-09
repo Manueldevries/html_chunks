@@ -19,7 +19,7 @@ var array = [
   { name: 's4', xPos: 0, yPos: 672, width: 620 },
 ]
 // sk output var
-const newAry = array.map(clone => ({...clone}) )
+const newAry = array.map(clone => ({ ...clone }))
 const yPosAry = array.map(item => item.yPos)
 const xPosAry = array.map(item => item.xPos)
 // building var
@@ -32,24 +32,27 @@ const arySortIdx = (ary, minY) => {
       aryYindex.push(index)
     }
   })
-  // yPosAry.shift() // Ooooops :(
-  // console.log(aryYindex);
-  return result.push(aryYindex.splice(0, parseInt(aryYindex[aryYindex.length - 1]) + 1 ))
-  // return [...aryYindex]
-  // aryYindex.splice(0, parseInt(aryYindex[aryYindex.length - 1]) + 1 )
+  return result.push(aryYindex.splice(0, aryYindex[aryYindex.length - 1] + 1))
 }
+const test = array.map((i, x) => i.xPos)
+// .slice(1, 4 + 1)
+const rest = (ary = [], idx = 0) => ary.slice(idx, ary.length)
+// console.log(` ${rest(test, 4)} `)
+// yPosAry.splice(result[0], parseInt(result[result.length - 1]) + 1)
 
 arySortIdx(yPosAry, arrayMin(yPosAry))
-console.log( result.map(it => `${it}`) );
-console.log(`
-${
-  array.map( (i,x) => [i.yPos,i.xPos]+'\n' )
-}
-`);
-arySortIdx(yPosAry, 167)
-console.log( result.map(it => `${it}`) );
-arySortIdx(yPosAry, 330)
-console.log( result.map(it => `${it}`) );
-arySortIdx(yPosAry, 672)
-console.log( result.map(it => `${it}`) );
+console.log(result.map(it => `${it}`))
+// console.log(` ${rest(test, result[0])} `)
+console.log(` ${test[0]} `)
 
+arySortIdx(yPosAry, 167)
+console.log(result.map(it => `${it}`))
+console.log(` ${rest(test, result[1][result[1].length - 1])} `)
+
+arySortIdx(yPosAry, 330)
+console.log(result.map(it => `${it}`))
+console.log(` ${rest(test, result[2][result[2].length - 1])} `)
+
+arySortIdx(yPosAry, 672)
+console.log(result.map(it => `${it}`))
+console.log(` ${rest(test, result[3][result[3].length - 1])} `)
