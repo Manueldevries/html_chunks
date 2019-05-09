@@ -1,3 +1,7 @@
+// fn get max of array
+const arrayMax = arr => arr.reduce((p, v) => (p > v ? p : v))
+const arrayMin = arr => arr.reduce((p, v) => (p < v ? p : v))
+
 var array = [
   { name: 's1', xPos: 0, yPos: 0, width: 620, height: 167 },
 
@@ -13,15 +17,11 @@ var array = [
 
   { name: 's4', xPos: 0, yPos: 672, width: 620 },
 ]
-
-const newAry = []
-array.map(item => newAry.push(item))
+// sk output var
+const newAry = array.map(clone => ({...clone}) )
 const yPosAry = array.map(item => item.yPos)
-const yPosAry_ = array.map(item => item.yPos)
+// building var
 const result = []
-// fn get max of array
-const arrayMax = arr => arr.reduce((p, v) => (p > v ? p : v))
-const arrayMin = arr => arr.reduce((p, v) => (p < v ? p : v))
 // array sort index same value
 const arySortIdx = (ary, minY) => {
   const aryYindex = []
@@ -30,14 +30,19 @@ const arySortIdx = (ary, minY) => {
       aryYindex.push(index)
     }
   })
+  yPosAry.shift() // Ooooops :(
   // console.log(aryYindex);
-  result.push(aryYindex.splice(0, parseInt(aryYindex[aryYindex.length - 1]) + 1 ))
+  return result.push(aryYindex.splice(0, parseInt(aryYindex[aryYindex.length - 1]) + 1 ))
+  // return [...aryYindex]
   // aryYindex.splice(0, parseInt(aryYindex[aryYindex.length - 1]) + 1 )
 }
 
 arySortIdx(yPosAry, arrayMin(yPosAry))
-arySortIdx(yPosAry, 167)
-arySortIdx(yPosAry, 330)
-arySortIdx(yPosAry, 672)
-
 console.log( result.map(it => `${it}`) );
+arySortIdx(yPosAry, 167)
+console.log( result.map(it => `${it}`) );
+arySortIdx(yPosAry, 330)
+console.log( result.map(it => `${it}`) );
+arySortIdx(yPosAry, 672)
+console.log( result.map(it => `${it}`) );
+
