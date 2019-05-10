@@ -44,12 +44,14 @@ const w = []
 // test.map( (i,x)=> i[1] === 620 ? w.push(i[1]) : i[1] )
 test.map( (i,x)=> w.push(i[1]) )
 
-arySortIdx(yPosAry, arrayMin(yPosAry))
-console.log(result.map(it => `${it}`))
-console.log(`[...test]:${[...test]} `);
+console.log(`[...xPosAry]: [${[...xPosAry]}] `)
+console.log(`[...test]:${[...test]} `)
 // console.log(`var w = [${ test.map( (i,x)=> ((x+1) % 2 === 0) ) } ]`);
 console.log(`const w = [${ w }] `);
 console.log(`w.filter(unique) = [${ w.filter(unique) }] `);
+
+arySortIdx(yPosAry, arrayMin(yPosAry))
+console.log(result.map(it => `${it}`))
 
 arySortIdx(yPosAry, 167)
 console.log(result.map(it => `${it}`))
