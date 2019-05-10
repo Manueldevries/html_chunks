@@ -1,7 +1,10 @@
 // fn get max of array
 const arrayMax = arr => arr.reduce((p, v) => (p > v ? p : v))
 const arrayMin = arr => arr.reduce((p, v) => (p < v ? p : v))
-
+// const unique = (val,idx, self) => self.indexOf(val) === idx
+function unique(value, index, self) {
+  return self.indexOf(value) === index;
+}
 var array = [
   { name: 's1', xPos: 0, yPos: 0, width: 620, height: 167 },
 
@@ -35,14 +38,18 @@ const arySortIdx = (ary, minY) => {
   return result.push(aryYindex.splice(0, aryYindex[aryYindex.length - 1] + 1))
 }
 const test = array.map((i, x) => [i.xPos,newAry[x].width])
-// .slice(1, 4 + 1)
 const rest = (ary = [], idx = 0) => ary.slice(idx, ary.length)
-// console.log(` ${rest(test, 4)} `)
-// console.log(` ${rest(test, result[1][result[1].length - 1])} `)
+const w = []
+// test.map( (i,x)=> { w.push( (x+1) % 2 === 0 ) } )
+// test.map( (i,x)=> i[1] === 620 ? w.push(i[1]) : i[1] )
+test.map( (i,x)=> w.push(i[1]) )
 
 arySortIdx(yPosAry, arrayMin(yPosAry))
 console.log(result.map(it => `${it}`))
 console.log(`[...test]:${[...test]} `);
+// console.log(`var w = [${ test.map( (i,x)=> ((x+1) % 2 === 0) ) } ]`);
+console.log(`const w = [${ w }] `);
+console.log(`w.filter(unique) = [${ w.filter(unique) }] `);
 
 arySortIdx(yPosAry, 167)
 console.log(result.map(it => `${it}`))
