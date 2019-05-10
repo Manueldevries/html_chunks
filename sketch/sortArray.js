@@ -34,25 +34,21 @@ const arySortIdx = (ary, minY) => {
   })
   return result.push(aryYindex.splice(0, aryYindex[aryYindex.length - 1] + 1))
 }
-const test = array.map((i, x) => i.xPos)
+const test = array.map((i, x) => [i.xPos,newAry[x].width])
 // .slice(1, 4 + 1)
 const rest = (ary = [], idx = 0) => ary.slice(idx, ary.length)
 // console.log(` ${rest(test, 4)} `)
-// yPosAry.splice(result[0], parseInt(result[result.length - 1]) + 1)
+// console.log(` ${rest(test, result[1][result[1].length - 1])} `)
 
 arySortIdx(yPosAry, arrayMin(yPosAry))
 console.log(result.map(it => `${it}`))
-// console.log(` ${rest(test, result[0])} `)
-console.log(` ${test[0]} `)
+console.log(`[...test]:${[...test]} `);
 
 arySortIdx(yPosAry, 167)
 console.log(result.map(it => `${it}`))
-console.log(` ${rest(test, result[1][result[1].length - 1])} `)
 
 arySortIdx(yPosAry, 330)
 console.log(result.map(it => `${it}`))
-console.log(` ${rest(test, result[2][result[2].length - 1])} `)
 
 arySortIdx(yPosAry, 672)
 console.log(result.map(it => `${it}`))
-console.log(` ${rest(test, result[3][result[3].length - 1])} `)
