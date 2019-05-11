@@ -1,4 +1,4 @@
-## algo décomposé
+
 
 - CAS 1 item.y unique = singleTab tr > td
 - CAS 2 item.y multiple = nestedTable tr > td > table tr
@@ -39,5 +39,24 @@ var gather = [[0,620],[[0,158],[0,158]],[158,254],[[412,208],[412,208],[412,208]
   [342,278], // slice_3 w620 (342 + 278)
   [0,620] // slice_4 w620
 ]
+
+```
+
+### TODO disect native fn reduce
+
+```javascript
+var array = [1, 1, 1, 1, 2, 2, 3, 3, 3, 4, 5, 5, 6],
+  grouped = array.reduce((r, v, i, a) => {
+    if (v === a[i - 1]) {
+      r[r.length - 1].push(v);
+    } else {
+      r.push(v === a[i + 1] ? [v] : v);
+    }
+    return r;
+  }, []);
+
+console.log(grouped);
+// output
+ [ [1, 1, 1, 1], [2, 2], [3, 3, 3], [5, 5], [6] ]
 
 ```
