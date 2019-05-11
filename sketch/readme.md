@@ -42,21 +42,23 @@ var gather = [[0,620],[[0,158],[0,158]],[158,254],[[412,208],[412,208],[412,208]
 
 ```
 
-### TODO disect native fn reduce
+### group by following values
 
 ```javascript
-var array = [1, 1, 1, 1, 2, 2, 3, 3, 3, 4, 5, 5, 6],
-  grouped = array.reduce((r, v, i, a) => {
-    if (v === a[i - 1]) {
-      r[r.length - 1].push(v);
-    } else {
-      r.push(v === a[i + 1] ? [v] : v);
-    }
-    return r;
-  }, []);
+// fn callback(arg*4) used on each array value
+const follow = (acc, v, i, a) => {
+  if (v === a[i - 1]) {
+    acc[acc.length - 1].push(v)
+  } else {
+    acc.push(v === a[i + 1] ? [v] : v)
+  }
+  return acc
+}
 
-console.log(grouped);
-// output
- [ [1, 1, 1, 1], [2, 2], [3, 3, 3], [5, 5], [6] ]
+var array = [0, 0, 0, 158, 412, 412, 412, 0, 342, 0]
+const followX = array.reduce(follow, [])
+
+console.log(`followX: ${followX} `)
+
 
 ```

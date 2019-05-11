@@ -3,7 +3,15 @@ const arrayMax = arr => arr.reduce((p, v) => (p > v ? p : v))
 const arrayMin = arr => arr.reduce((p, v) => (p < v ? p : v))
 // const unique = (val,idx, self) => self.indexOf(val) === idx
 function unique(value, index, self) {
-  return self.indexOf(value) === index;
+  return self.indexOf(value) === index
+}
+const follow = (acc, curr, i, array) => {
+  if (curr === array[i - 1]) {
+    acc[acc.length - 1].push(curr)
+  } else {
+    acc.push(curr === array[i + 1] ? [curr] : curr)
+  }
+  return acc
 }
 var array = [
   { name: 's1', xPos: 0, yPos: 0, width: 620, height: 167 },
@@ -37,18 +45,15 @@ const arySortIdx = (ary, minY) => {
   })
   return result.push(aryYindex.splice(0, aryYindex[aryYindex.length - 1] + 1))
 }
-const test = array.map((i, x) => [i.xPos,newAry[x].width])
+const test = array.map((i, x) => [i.xPos, newAry[x].width])
 const rest = (ary = [], idx = 0) => ary.slice(idx, ary.length)
 const w = []
-// test.map( (i,x)=> { w.push( (x+1) % 2 === 0 ) } )
-// test.map( (i,x)=> i[1] === 620 ? w.push(i[1]) : i[1] )
-test.map( (i,x)=> w.push(i[1]) )
+const xPosFollow = xPosAry.reduce(follow, [])
+test.map((i, x) => w.push(i[1]))
 
 console.log(`[...xPosAry]: [${[...xPosAry]}] `)
+console.log(`xPosFollow: ${xPosFollow} `)
 console.log(`[...test]:${[...test]} `)
-// console.log(`var w = [${ test.map( (i,x)=> ((x+1) % 2 === 0) ) } ]`);
-console.log(`const w = [${ w }] `);
-console.log(`w.filter(unique) = [${ w.filter(unique) }] `);
 
 arySortIdx(yPosAry, arrayMin(yPosAry))
 console.log(result.map(it => `${it}`))
