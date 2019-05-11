@@ -7,8 +7,18 @@ function unique(value, index, self) {
 }
 const follow = (acc, curr, i, array) => {
   if (curr === array[i - 1]) {
+    // if (yPosAry[i] === 620) alert(curr)
+    console.log(
+      `curr: ${curr}, newAry[i].width: ${newAry[i].width}, newAry[i].yPos: ${
+        newAry[i].yPos
+      } `
+    )
+    // ? acc[acc.length - 1].push(['Y0:', curr])
+    // : acc[acc.length - 1].push(curr)
     acc[acc.length - 1].push(curr)
   } else {
+    console.log(`curr: ${curr}, newAry[i].width: ${newAry[i].width} `)
+    if (yPosAry[i] === 620) alert(curr)
     acc.push(curr === array[i + 1] ? [curr] : curr)
   }
   return acc
@@ -52,8 +62,9 @@ const xPosFollow = xPosAry.reduce(follow, [])
 test.map((i, x) => w.push(i[1]))
 
 console.log(`[...xPosAry]: [${[...xPosAry]}] `)
-console.log(`xPosFollow: ${xPosFollow} `)
-console.log(`[...test]:${[...test]} `)
+console.log(`xPosFollow: `, xPosFollow)
+console.log([...yPosAry, ...xPosFollow])
+console.log(`test[i.xPos, newAry[x].width]:${test} `)
 
 arySortIdx(yPosAry, arrayMin(yPosAry))
 console.log(result.map(it => `${it}`))
