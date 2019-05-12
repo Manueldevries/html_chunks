@@ -38,8 +38,8 @@ const followw = (acc, curr, i, array) => {
   if (array[i - 1] === undefined) {
     console.log('start - 1 = ' + array[i - 1])
     // acc.push(curr)
-  } else if (curr === array[i - 1]) {
-    acc[acc.length - 1].push([curr])
+  } else if (curr[2] === array[i - 1][2]) {
+    acc[acc.length - 1].push(curr)
   } else if (array[i + 1] === undefined) {
     console.log('end +1 = ' + array[i + 1])
   } else {
