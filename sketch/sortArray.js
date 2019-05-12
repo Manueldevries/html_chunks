@@ -19,7 +19,7 @@ var count = 0
 const newAry = array.map(clone => ({ ...clone }))
 const yPosAry = array.map(item => item.yPos)
 const xPosAry = array.map(item => item.xPos)
-const xywPosAry = array.map(item => [item.xPos,item.yPos,item.width])
+const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width])
 // building nested obj
 const follow = (acc, curr, i, array) => {
   if (curr === array[i - 1]) {
@@ -27,29 +27,34 @@ const follow = (acc, curr, i, array) => {
   } else {
     acc.push(curr === array[i + 1] ? [curr] : curr)
   }
-  count+=1
+  count += 1
   return acc
 }
 // building nested obj
 const followw = (acc, curr, i, array) => {
-  if(array[i -1]) {
-    console.log(curr[2],',',array[i - 1][2]);
-    if (curr[2] === array[i - 1][2]) {
-      // console.log(curr[2],'===',array[i - 1][2]);
-      acc[acc.length - 1].push(curr)
-    }
+  // if (curr[2] === array[i - 1][2]) {
+  // console.log(`acc: ${acc}, curr:${curr}, array[i]:${array[i]}`)
+  // array[i - 1] === undefined ? acc.push([curr]) : acc[acc.length - 1].push(curr)
+  if (array[i - 1] === undefined) {
+    console.log('start - 1 = ' + array[i - 1])
+    // acc.push(curr)
+  } else if (curr === array[i - 1]) {
+    acc[acc.length - 1].push([curr])
+  } else if (array[i + 1] === undefined) {
+    console.log('end +1 = ' + array[i + 1])
   } else {
-    console.log(curr[2],'===',array[i + 1][2]);
+    console.log(array[i + 1][2])
     acc.push(curr[2] === array[i + 1][2] ? [curr] : curr)
   }
-  count+=1
+
   return acc
 }
 
 // const xPosFollow = xPosAry.reduce(follow, [])
-const xywPosFollow = xywPosAry.reduce(follow, [])
-const xywPosFolloww = xywPosAry.reduce(followw, [])
 // console.log('xPosFollow: ', xPosFollow)
 
-// console.log(`xywPosAry: [${xywPosAry}] `,xywPosAry)
-console.log(xywPosFolloww);
+console.log(xywPosAry)
+// const xywPosFolloww = xywPosAry.reduce(followw, [])
+const xywPosFolloww = xywPosAry.reduce(followw, [])
+// console.log(xywPosFolloww.map(i => `${i}`))
+console.log(xywPosFolloww)
