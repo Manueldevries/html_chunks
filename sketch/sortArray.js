@@ -31,7 +31,8 @@ const followw = (acc, curr, i, array) => {
     // acc.push({'curr':curr})
     acc.push(curr)
   } else {
-    console.log(array[i + 1][2])
+    // console.log(array[i + 1][2])
+    console.log(`curr[2]:${curr[2]} === array[i + 1][2]${array[i + 1][2]}, curr[1]:${curr[1]} === array[i + 1][1]${array[i + 1][1]}`)
     acc.push(curr[2] === array[i + 1][2] ? [curr] : {'curr':curr})
   }
   return acc
