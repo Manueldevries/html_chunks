@@ -17,33 +17,21 @@ var array = [
 // sk output var
 const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width])
 var memo = 0
-function acw () {
-  function add(memo,x) {
-    return memo + x ;
-  }
-  return add
-}
-var add = acw()
+
 // building nested obj
 const followw = (acc, curr, i, array) => {
   if (array[i - 1] === undefined) {
     console.log('start - 1 = ' + array[i - 1])
-    // acc.push({'curr':curr})
     acc.push(curr)
-  } else if (curr[2] === array[i - 1][2] ) {
-    acw(curr[2])
-    // acc[acc.length - 1].push([curr])
+  } else if (curr[2] === array[i - 1][2]) {
     acc[acc.length - 1].push(curr)
   } else if (array[i + 1] === undefined) {
     console.log('end +1 = ' + array[i + 1])
-    // acc.push({'curr':curr})
     acc.push(curr)
   } else {
-    // console.log(array[i + 1][2])
-    console.log(`curr[2]:${curr[2]} === array[i + 1][2]${array[i + 1][2]}, curr[1]:${curr[1]} === array[i + 1][1]${array[i + 1][1]}`)
-    acc.push(curr[2] === array[i + 1][2] ? [curr] : {'curr':curr})
-    memo += curr[2]
-    curr[2] === array[i + 1][2] ? acw() : acw(memo,curr[2])
+    acc.push(curr[2] === array[i + 1][2] ? [curr] : { curr: curr })
+    console.log(memo < 620 ? (memo += curr[2]) : (memo = 0))
+    console.log(`memo:${memo}, curr[2]${curr[2]}`)
   }
   return acc
 }
