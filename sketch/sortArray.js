@@ -26,14 +26,13 @@ const followw = (acc, curr, i, array) => {
     console.log('start - 1 = ' + array[i - 1])
     acc.push(curr)
   } else if (curr[2] === array[i - 1][2]) {
+    if( memo < 620 && curr[1] === array[i - 1][1] ) memo += curr[2]
     acc[acc.length - 1].push(curr)
   } else if (array[i + 1] === undefined) {
     console.log('end +1 = ' + array[i + 1])
     acc.push(curr)
   } else {
-    // console.log(`memo:${memo}, curr[2]${curr[2]}`)
     if( memo < 620 ){
-      // console.log( memo < 620 ? memo += curr[2] : memo = 0 )
       memo += curr[2]
       aryMemo.push(curr)
     }else{
