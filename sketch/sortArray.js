@@ -21,21 +21,26 @@ let aryMemo = []
 
 // building nested obj
 const followw = (acc, curr, i, array) => {
-  console.log(memo);
   if (array[i - 1] === undefined) {
-    console.log('start - 1 = ' + array[i - 1])
+    // console.log('start - 1 = ' + array[i - 1])
     acc.push(curr)
   } else if (curr[2] === array[i - 1][2]) {
-    if( memo < 620 && curr[1] === array[i - 1][1] ) memo += curr[2]
+    memo
+    if (memo < 620 && curr[1] === array[i - 1][1]) {
+      memo += curr[2]
+    } else if (memo === 620) {
+      memo = 0
+    }
     acc[acc.length - 1].push(curr)
   } else if (array[i + 1] === undefined) {
-    console.log('end +1 = ' + array[i + 1])
+    // console.log('end +1 = ' + array[i + 1])
     acc.push(curr)
   } else {
-    if( memo < 620 ){
+    var show_width = array[i][2]
+    if (memo < 620) {
       memo += curr[2]
       aryMemo.push(curr)
-    }else{
+    } else {
       memo = 0
     }
     acc.push(curr[2] === array[i + 1][2] ? [curr] : { curr: curr })
