@@ -69,5 +69,47 @@ const followX = array.reduce(follow, [])
 
 console.log(`followX: ${followX} `)
 
+```
+
+```javascript
+// xywPosFolloww
+0:Array(3) [0, 0, 620]
+1:Array(2) [Array(3), Array(3)]
+2:Object {curr: Array(3)}
+3:Array(3) [Array(3), Array(3), Array(3)]
+4:Object {curr: Array(3)}
+5:Object {curr: Array(3)}
+6:Array(3) [0, 672, 620]
+
+Array(3) [0, 0, 620]
+
+Array(2) [Array(3), Array(3)]
+Array(3) [0, 167, 158]
+Array(3) [0, 218, 158]
+
+Object {curr: Array(3)}
+Array(3) [158, 167, 254]
+
+Array(3) [Array(3), Array(3), Array(3)]
+Array(3) [412, 167, 208]
+Array(3) [412, 218, 208]
+Array(3) [412, 276, 208]
+
+Object {curr: Array(3)}
+{Array(3) [0, 330, 342]}
+Object {curr: Array(3)}
+{Array(3) [342, 330, 278]}
+
+Array(3) [0, 672, 620]
+
+0: (3) [0, 0, 620]
+1: (2) [Array(3), Array(3)]
+2: {curr: Array(3)}
+3: (3) [Array(3), Array(3), Array(3)]
+4: {curr: Array(3)}
+5: {curr: Array(3)}
+6: (3) [0, 672, 620]
+length: 7
+__proto__: Array(0)
 
 ```
