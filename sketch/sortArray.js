@@ -15,46 +15,39 @@ var array = [
   { name: 's4', xPos: 0, yPos: 672, width: 620 },
 ]
 // sk output var
-var count = 0
-const newAry = array.map(clone => ({ ...clone }))
-const yPosAry = array.map(item => item.yPos)
-const xPosAry = array.map(item => item.xPos)
 const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width])
-// building nested obj
-const follow = (acc, curr, i, array) => {
-  if (curr === array[i - 1]) {
-    acc[acc.length - 1].push(curr)
-  } else {
-    acc.push(curr === array[i + 1] ? [curr] : curr)
-  }
-  count += 1
-  return acc
-}
+let memo = 0
+let aryMemo = []
+
 // building nested obj
 const followw = (acc, curr, i, array) => {
-  // if (curr[2] === array[i - 1][2]) {
-  // console.log(`acc: ${acc}, curr:${curr}, array[i]:${array[i]}`)
-  // array[i - 1] === undefined ? acc.push([curr]) : acc[acc.length - 1].push(curr)
   if (array[i - 1] === undefined) {
-    console.log('start - 1 = ' + array[i - 1])
-    // acc.push(curr)
+    // console.log('start - 1 = ' + array[i - 1])
+    acc.push(curr)
   } else if (curr[2] === array[i - 1][2]) {
+    memo
+    if (memo < 620 && curr[1] === array[i - 1][1]) {
+      memo += curr[2]
+    } else if (memo === 620) {
+      memo = 0
+    }
     acc[acc.length - 1].push(curr)
   } else if (array[i + 1] === undefined) {
-    console.log('end +1 = ' + array[i + 1])
+    // console.log('end +1 = ' + array[i + 1])
+    acc.push(curr)
   } else {
-    console.log(array[i + 1][2])
-    acc.push(curr[2] === array[i + 1][2] ? [curr] : curr)
+    var show_width = array[i][2]
+    if (memo < 620) {
+      memo += curr[2]
+      aryMemo.push(curr)
+    } else {
+      memo = 0
+    }
+    acc.push(curr[2] === array[i + 1][2] ? [curr] : { curr: curr })
   }
-
   return acc
 }
 
-// const xPosFollow = xPosAry.reduce(follow, [])
-// console.log('xPosFollow: ', xPosFollow)
-
-console.log(xywPosAry)
-// const xywPosFolloww = xywPosAry.reduce(followw, [])
+// console.log(xywPosAry)
 const xywPosFolloww = xywPosAry.reduce(followw, [])
-// console.log(xywPosFolloww.map(i => `${i}`))
 console.log(xywPosFolloww)
