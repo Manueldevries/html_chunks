@@ -113,3 +113,8 @@ length: 7
 __proto__: Array(0)
 
 ```
+## Solution pour filtrer les slice
+
+si width=620 -> 1 slice;
+log: ary[x] si === 0 et que ary[i+1][y] != curr[y]
+// ary[i][0](x) === 0 && ary[i+1][0] > 0 -> 1 slice
