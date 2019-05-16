@@ -16,26 +16,35 @@ var array = [
 
 const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width])
 let memo = 0
+let j    = 0
 let aryMemo = []
 const inf620 = (accw, curr) =>
   accw < 620 ? ((memo += curr[2]), aryMemo.push(curr)) : (memo = 0)
 // building nested obj
 const followw = (acc, curr, i, array) => {
   if (array[i - 1] === undefined) {
+<<<<<<< Updated upstream
     // console.log('start - 1 = ' + array[i - 1])
     acc.push(curr)
+=======
+    acc.push( curr[2] === array[i + 1][2] ? [curr] : curr )
+>>>>>>> Stashed changes
   } else if (curr[2] === array[i - 1][2]) {
+
     memo
     if (memo < 620 && curr[1] === array[i - 1][1]) {
       memo += curr[2]
     } else if (memo === 620) {
       memo = 0
     }
+    (watcher(i, acc))
     acc[acc.length - 1].push(curr)
+
   } else if (array[i + 1] === undefined) {
     // console.log('end +1 = ' + array[i + 1])
     acc.push(curr)
   } else {
+    array[i][0] === 0 ? alert('new slice') : console.log(array[i][2]);
     var show_width = array[i][2]
     var show_next_width = array[i + 1][2]
     inf620(memo, curr)
@@ -47,3 +56,7 @@ const followw = (acc, curr, i, array) => {
 // console.log(xywPosAry)
 const xywPosFolloww = xywPosAry.reduce(followw, [])
 console.log(xywPosFolloww)
+function watcher(i, acc) {
+  return j = i - 1, acc[i];
+}
+
