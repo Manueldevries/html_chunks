@@ -1,5 +1,3 @@
-
-
 - CAS 1 item.y unique = singleTab tr > td
 - CAS 2 item.y multiple = nestedTable tr > td > table tr
 
