@@ -102,19 +102,8 @@ Object {curr: Array(3)}
 
 Array(3) [0, 672, 620]
 
-0: (3) [0, 0, 620]
-1: (2) [Array(3), Array(3)]
-2: {curr: Array(3)}
-3: (3) [Array(3), Array(3), Array(3)]
-4: {curr: Array(3)}
-5: {curr: Array(3)}
-6: (3) [0, 672, 620]
-length: 7
-__proto__: Array(0)
 
 ```
 ## Solution pour filtrer les slice
 
-si width=620 -> 1 slice;
-log: ary[x] si === 0 et que ary[i+1][y] != curr[y]
-// ary[i][0](x) === 0 && ary[i+1][0] > 0 -> 1 slice
+- @see sortArray.js -> var arySlice to get index of array.obj[{…}] to cut slice. After cut slices into nested table (based on xywPosFolloww result ?)
