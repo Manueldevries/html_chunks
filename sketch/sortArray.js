@@ -43,12 +43,12 @@ const followw = (acc, curr, i, array) => {
     acc[acc.length - 1].push(curr)
   } else if (array[i + 1] === undefined) {
     array[i][0] === 0 ? arySlice.push(['slice:'+newAry[i].name,'index:'+i]) : false
+    acc.push(curr)
     acc.push(curr) // console.log('end +1 = ' + array[i + 1])
   } else {
     array[i][0] === 0 ? arySlice.push(['slice:'+newAry[i].name,'index:'+i]) : false
-    var show_width = array[i][2]
-    var show_next_width = array[i + 1][2]
     inf620(memo, curr)
+    arySlice.push(curr[2] === array[i + 1][2] ? [curr] : { curr: curr })
     acc.push(curr[2] === array[i + 1][2] ? [curr] : { curr: curr })
   }
   return acc
