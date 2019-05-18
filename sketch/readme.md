@@ -69,5 +69,41 @@ const followX = array.reduce(follow, [])
 
 console.log(`followX: ${followX} `)
 
+```
+
+```javascript
+// xywPosFolloww
+0:Array(3) [0, 0, 620]
+1:Array(2) [Array(3), Array(3)]
+2:Object {curr: Array(3)}
+3:Array(3) [Array(3), Array(3), Array(3)]
+4:Object {curr: Array(3)}
+5:Object {curr: Array(3)}
+6:Array(3) [0, 672, 620]
+
+Array(3) [0, 0, 620]
+
+Array(2) [Array(3), Array(3)]
+Array(3) [0, 167, 158]
+Array(3) [0, 218, 158]
+
+Object {curr: Array(3)}
+Array(3) [158, 167, 254]
+
+Array(3) [Array(3), Array(3), Array(3)]
+Array(3) [412, 167, 208]
+Array(3) [412, 218, 208]
+Array(3) [412, 276, 208]
+
+Object {curr: Array(3)}
+{Array(3) [0, 330, 342]}
+Object {curr: Array(3)}
+{Array(3) [342, 330, 278]}
+
+Array(3) [0, 672, 620]
+
 
 ```
+## Solution pour filtrer les slice
+
+- @see sortArray.js -> var arySlice to get index of array.obj[{…}] to cut slice. After cut slices into nested table (based on xywPosFolloww result ?)
