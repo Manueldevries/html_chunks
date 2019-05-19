@@ -107,3 +107,4 @@ Array(3) [0, 672, 620]
 ## Solution pour filtrer les slice
 
 - @see sortArray.js -> var arySlice to get index of array.obj[{…}] to cut slice. After cut slices into nested table (based on xywPosFolloww result ?)
+
