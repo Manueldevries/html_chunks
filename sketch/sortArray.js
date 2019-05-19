@@ -26,8 +26,15 @@ let memo = 0
 let j    = 0
 let aryMemo = []
 let arySlice = []
-const inf620 = (curr, idx) =>
-  memo < 620 ? ((memo += curr[2]), aryMemo.push(curr), idx) : (memo = 0)
+const inf620 = (curr, array, i) =>
+  memo < 620 ? ( (array[i][1] === curr[1] ? memo += curr[2] : false), aryMemo.push(curr) ) : (memo = 0)
+function inf620Moins1(curr, array, i) {
+  if (memo < 620) {
+    if(curr[1] === array[i][1]) memo += curr[2];
+  } else {
+    memo = 0;
+  }
+}
 // building nested obj
 const followw = (acc, curr, i, array) => {
   if (array[i - 1] === undefined) {
@@ -36,7 +43,7 @@ const followw = (acc, curr, i, array) => {
   } else if (curr[2] === array[i - 1][2]) {
 
     memo
-    inf620Moins1(curr, array, i);
+    inf620Moins1(curr, array, (i-1));
     acc[acc.length - 1].push(curr)
 
   } else if (array[i + 1] === undefined) {
@@ -45,7 +52,7 @@ const followw = (acc, curr, i, array) => {
   } else {
     array[i][0] === 0 ? arySlice.push(['slice:'+newAry[i].name,'index:'+i]) : false
 
-    inf620(curr, i)
+    inf620(curr, array, i)
     acc.push(curr[2] === array[i + 1][2] ? [curr] : { curr: curr })
   }
   return acc
@@ -54,12 +61,3 @@ const followw = (acc, curr, i, array) => {
 // console.log(xywPosAry)
 const xywPosFolloww = xywPosAry.reduce(followw, [])
 console.log(xywPosFolloww)
-function inf620Moins1(curr, array, i) {
-  if (memo < 620 && curr[1] === array[i - 1][1]) {
-    memo += curr[2];
-  }
-  else if (memo === 620) {
-    memo = 0;
-  }
-}
-
