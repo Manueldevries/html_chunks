@@ -27,23 +27,18 @@ let j    = 0
 let aryMemo = []
 let arySlice = []
 const inf620 = (curr, array, i) =>
-  memo < 620 ? ( (array[i][1] === curr[1] ? memo += curr[2] : false), aryMemo.push(curr) ) : (memo = 0)
-function inf620Moins1(curr, array, i) {
-  if (memo < 620) {
-    if(curr[1] === array[i][1]) memo += curr[2];
-  } else {
-    memo = 0;
-  }
-}
+  memo < 620 ?
+    ( (array[i][1] === curr[1] ?
+      memo += curr[2]
+      : false), aryMemo.push(curr) )
+    : (memo = 0, aryMemo = [])
 // building nested obj
 const followw = (acc, curr, i, array) => {
   if (array[i - 1] === undefined) {
     array[i][0] === 0 ? arySlice.push(['slice:'+newAry[i].name,'index:'+i]) : false
     acc.push( curr[2] === array[i + 1][2] ? [curr] : curr )
   } else if (curr[2] === array[i - 1][2]) {
-
-    memo
-    inf620Moins1(curr, array, (i-1));
+    inf620(curr, array, (i-1));
     acc[acc.length - 1].push(curr)
 
   } else if (array[i + 1] === undefined) {
