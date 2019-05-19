@@ -37,7 +37,6 @@ const followw = (acc, curr, i, array) => {
 
     memo
     inf620Moins1(curr, array, i);
-    (watcher(i, acc))
     acc[acc.length - 1].push(curr)
 
   } else if (array[i + 1] === undefined) {
@@ -62,9 +61,5 @@ function inf620Moins1(curr, array, i) {
   else if (memo === 620) {
     memo = 0;
   }
-}
-
-function watcher(i, acc) {
-  return j = i - 1, acc[i];
 }
 
