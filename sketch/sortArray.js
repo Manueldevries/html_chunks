@@ -12,37 +12,45 @@ var array = [
   { name: 's3c2', xPos: 342, yPos: 330, width: 278, height: 102 },
 
   { name: 's4', xPos: 0, yPos: 672, width: 620 },
-]
 
+  { name: 's5c1s1', xPos: 0, yPos: 682, width: 158, height: 51 },
+  { name: 's5c1s2', xPos: 0, yPos: 733, width: 158, height: 112 },
+  { name: 's5c2', xPos: 158, yPos: 682, width: 254, height: 163 },
+  { name: 's5c3s1', xPos: 412, yPos: 682, width: 208, height: 51 },
+  { name: 's5c3s2', xPos: 412, yPos: 733, width: 208, height: 58 },
+  { name: 's5c3s3', xPos: 412, yPos: 791, width: 208, height: 54 },
+]
+const newAry = array.map(clone => ({ ...clone }))
 const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width])
 let memo = 0
 let j    = 0
 let aryMemo = []
-const inf620 = (accw, curr) =>
-  accw < 620 ? ((memo += curr[2]), aryMemo.push(curr)) : (memo = 0)
+let arySlice = []
+const inf620 = (curr, array, i) =>
+  memo < 620 ?
+    ( (array[i][1] === curr[1] ?
+      memo += curr[2]
+      : false), aryMemo.push(curr) )
+    : (memo = 0, aryMemo = [])
 // building nested obj
 const followw = (acc, curr, i, array) => {
   if (array[i - 1] === undefined) {
+<<<<<<< HEAD
+=======
+    array[i][0] === 0 ? arySlice.push(['slice:'+newAry[i].name,'index:'+i]) : false
+>>>>>>> ef857ebb986a36bae0161f64889eed2f3ec0e0a4
     acc.push( curr[2] === array[i + 1][2] ? [curr] : curr )
   } else if (curr[2] === array[i - 1][2]) {
-
-    memo
-    if (memo < 620 && curr[1] === array[i - 1][1]) {
-      memo += curr[2]
-    } else if (memo === 620) {
-      memo = 0
-    }
-    (watcher(i, acc))
+    inf620(curr, array, (i-1));
     acc[acc.length - 1].push(curr)
 
   } else if (array[i + 1] === undefined) {
-    // console.log('end +1 = ' + array[i + 1])
-    acc.push(curr)
+    array[i][0] === 0 ? arySlice.push(['slice:'+newAry[i].name,'index:'+i]) : false
+    // acc.push( curr[2] === array[i + 1][2] ? [curr] : curr ) // undefined
   } else {
-    array[i][0] === 0 ? alert('new slice') : console.log(array[i][2]);
-    var show_width = array[i][2]
-    var show_next_width = array[i + 1][2]
-    inf620(memo, curr)
+    array[i][0] === 0 ? arySlice.push(['slice:'+newAry[i].name,'index:'+i]) : false
+
+    inf620(curr, array, i)
     acc.push(curr[2] === array[i + 1][2] ? [curr] : { curr: curr })
   }
   return acc
@@ -51,7 +59,3 @@ const followw = (acc, curr, i, array) => {
 // console.log(xywPosAry)
 const xywPosFolloww = xywPosAry.reduce(followw, [])
 console.log(xywPosFolloww)
-function watcher(i, acc) {
-  return j = i - 1, acc[i];
-}
-
