@@ -24,11 +24,14 @@ var array = [
 
 const newAry = array.map(clone => ({ ...clone }))
 const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width])
+<<<<<<< HEAD
 const xywPosFolloww = xywPosAry.reduce(followw, [])
 
 let memo = 0
 let aryMemo = []
 let arySlice = []
+=======
+>>>>>>> store array in sub
 
 // building nested obj
 const followw = (acc, curr, i, array) => {
@@ -37,22 +40,32 @@ const followw = (acc, curr, i, array) => {
   } else if (curr[2] === array[i - 1][2]) {
     acc[acc.length - 1].push(curr)
   } else if (array[i + 1] === undefined) {
-
   } else {
     acc.push(curr[2] === array[i + 1][2] ? [curr] : curr)
   }
   return acc
 }
 
-// console.log(xywPosAry)
-// console.log(array.length);
 const xywPosFolloww = xywPosAry.reduce(followw, [])
 console.log(xywPosFolloww)
+
+let memo = 0
+let aryMemo = []
+let arySlice = []
 xywPosFolloww.map(i=>{
   i[2] === 620 ?
-    (console.log(i),memo=0)
+    (console.log(i),memo=0,arySlice.push(i))
     :(
-      i[0][2] ? memo += i[0][2] : memo += i[2],
-      i[0][2] ? console.log('i:'+i[0][2]+' memo:'+memo) : console.log('i:'+i[2]+' memo:'+memo)
+      i[0][2] ?
+        (
+          memo += i[0][2],
+          memo < 620 ? aryMemo.push([i]) : memo = 0, arySlice.push(aryMemo), aryMemo = [], console.log('i[0][2]:'+i[0][2]+' memo:'+memo)
+        )
+        :(
+          memo += i[2],
+          memo < 620 ? aryMemo.push(i) : memo = 0, arySlice.push(aryMemo), aryMemo = [], console.log('i[2]:'+i[2]+' memo:'+memo)
+        )
   );
 })
+
+console.log(arySlice);
