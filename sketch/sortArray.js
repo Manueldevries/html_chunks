@@ -57,11 +57,12 @@ xywPosFolloww.map(i=>{
     :(
       i[0][2] ?
         (
-          memo < 620 ? (memo += i[0][2],aryMemo.push(i)) : (memo = 0, arySlice.push(aryMemo), aryMemo = [])
+          memo < 620 ? ( memo += i[0][2], aryMemo.push(i), (memo==620 ? (memo=0,arySlice.push(aryMemo),aryMemo = []) : 'null') ) : (memo = 0, arySlice.push(aryMemo), aryMemo = [])
         )
         :(
-          memo < 620 ? (aryMemo.push(i), memo += i[2]) : (memo = 0, arySlice.push(aryMemo), aryMemo = [])
+          memo < 620 ? (memo += i[2], aryMemo.push(i), (memo==620 ? (memo=0,arySlice.push(aryMemo),aryMemo = []) : 'null') ) : (memo = 0, arySlice.push(aryMemo), aryMemo = [])
         )
   );
 })
 
+console.log(arySlice);
