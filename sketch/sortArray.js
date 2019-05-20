@@ -25,15 +25,19 @@ const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width])
 let memo = 0
 let aryMemo = []
 let arySlice = []
+const s = (cur,ary,i) => memo < 620 ?
+  (ary[i][1] === cur[1] ? memo += cur[2] : aryMemo.push(cur[2] === 620 ? [cur] : {cur} ) )
+  : memo = 0
 const inf620 = (curr, array, i) => {
-  let current = {'name':newAry[i].name,'x':newAry[i].xPos,'y':newAry[i].yPos,'w':newAry[i].width}
-  let prev = newAry[i-1].name
-  let next = newAry[i+1].name
-  return memo < 620 ?
-    ( (array[i][1] === curr[1] ?
-      memo += curr[2]
-      : false), aryMemo.push(curr) )
-    : (memo = 0, aryMemo = [])
+  let current = {'n':newAry[i].name,'x':newAry[i].xPos,'y':newAry[i].yPos,'w':newAry[i].width}
+  let prev = {'n':newAry[i-1].name,'x':newAry[i-1].xPos,'y':newAry[i-1].yPos,'w':newAry[i-1].width}
+  let next = {'n':newAry[i+1].name,'x':newAry[i+1].xPos,'y':newAry[i+1].yPos,'w':newAry[i+1].width}
+  s(curr,array,i)
+  // return memo < 620 ?
+  //   ( (array[i][1] === curr[1] ?
+  //     memo += curr[2]
+  //     : false), aryMemo.push(curr) )
+  //   : (memo = 0, aryMemo = [])
 }
 // building nested obj
 const followw = (acc, curr, i, array) => {
