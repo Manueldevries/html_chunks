@@ -23,12 +23,7 @@ const inf620 = (accw, curr) =>
 // building nested obj
 const followw = (acc, curr, i, array) => {
   if (array[i - 1] === undefined) {
-<<<<<<< Updated upstream
-    // console.log('start - 1 = ' + array[i - 1])
-    acc.push(curr)
-=======
     acc.push( curr[2] === array[i + 1][2] ? [curr] : curr )
->>>>>>> Stashed changes
   } else if (curr[2] === array[i - 1][2]) {
 
     memo
