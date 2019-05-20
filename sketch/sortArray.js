@@ -46,8 +46,7 @@ const followw = (acc, curr, i, array) => {
   return acc
 }
 
-const xywPosFolloww = xywPosAry.reduce(followw, [])
-console.log(xywPosFolloww)
+const xywPosFolloww = xywPosAry.reduce(followw, []); console.log(xywPosFolloww)
 
 let memo = 0
 let aryMemo = []
@@ -58,14 +57,13 @@ xywPosFolloww.map(i=>{
     :(
       i[0][2] ?
         (
-          memo += i[0][2],
-          memo < 620 ? (aryMemo.push([i])) : (memo = 0, arySlice.push(aryMemo), aryMemo = [], console.log('i[0][2]:'+i[0][2]+' memo:'+memo))
+          memo < 620 ? (aryMemo.push(i)) : (memo = 0, arySlice.push(aryMemo), aryMemo = []),
+          memo += i[0][2]
         )
         :(
-          memo += i[2],
-          memo < 620 ? aryMemo.push(i) : (memo = 0, arySlice.push(aryMemo), aryMemo = [], console.log('i[2]:'+i[2]+' memo:'+memo))
+          memo < 620 ? aryMemo.push(i) : (memo = 0, arySlice.push(aryMemo), aryMemo = []),
+          memo += i[2]
         )
   );
 })
 
-console.log(arySlice);
