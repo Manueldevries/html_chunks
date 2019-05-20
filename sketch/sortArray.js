@@ -26,13 +26,13 @@ let memo = 0
 let aryMemo = []
 let arySlice = []
 const inf620 = (curr, array, i) => {
-  let toFollow = array[i][0]
+  let current = {'name':newAry[i].name,'x':newAry[i].xPos,'y':newAry[i].yPos,'w':newAry[i].width}
+  let prev = newAry[i-1].name
+  let next = newAry[i+1].name
   return memo < 620 ?
     ( (array[i][1] === curr[1] ?
       memo += curr[2]
-      // : false), aryMemo.push(curr) )
-      : false),
-      aryMemo.push(curr[0] === array[i-1][0] ? [curr] : {curr}) )
+      : false), aryMemo.push(curr) )
     : (memo = 0, aryMemo = [])
 }
 // building nested obj
