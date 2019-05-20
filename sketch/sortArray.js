@@ -33,18 +33,26 @@ let arySlice = []
 // building nested obj
 const followw = (acc, curr, i, array) => {
   if (array[i - 1] === undefined) {
-
     acc.push( curr[2] === array[i + 1][2] ? [curr] : curr )
   } else if (curr[2] === array[i - 1][2]) {
     acc[acc.length - 1].push(curr)
   } else if (array[i + 1] === undefined) {
 
   } else {
-    acc.push(curr[2] === array[i + 1][2] ? [curr] : { curr: curr })
+    acc.push(curr[2] === array[i + 1][2] ? [curr] : curr)
   }
   return acc
 }
 
 // console.log(xywPosAry)
+// console.log(array.length);
 const xywPosFolloww = xywPosAry.reduce(followw, [])
 console.log(xywPosFolloww)
+xywPosFolloww.map(i=>{
+  i[2] === 620 ?
+    (console.log(i),memo=0)
+    :(
+      i[0][2] ? memo += i[0][2] : memo += i[2],
+      i[0][2] ? console.log('i:'+i[0][2]+' memo:'+memo) : console.log('i:'+i[2]+' memo:'+memo)
+  );
+})
