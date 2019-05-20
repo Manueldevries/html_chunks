@@ -23,22 +23,22 @@ var array = [
 const newAry = array.map(clone => ({ ...clone }))
 const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width])
 let memo = 0
-let j    = 0
 let aryMemo = []
 let arySlice = []
-const inf620 = (curr, array, i) =>
-  memo < 620 ?
+const inf620 = (curr, array, i) => {
+  let toFollow = array[i][0]
+  return memo < 620 ?
     ( (array[i][1] === curr[1] ?
       memo += curr[2]
-      : false), aryMemo.push(curr) )
+      // : false), aryMemo.push(curr) )
+      : false),
+      aryMemo.push(curr[0] === array[i-1][0] ? [curr] : {curr}) )
     : (memo = 0, aryMemo = [])
+}
 // building nested obj
 const followw = (acc, curr, i, array) => {
   if (array[i - 1] === undefined) {
-<<<<<<< HEAD
-=======
     array[i][0] === 0 ? arySlice.push(['slice:'+newAry[i].name,'index:'+i]) : false
->>>>>>> ef857ebb986a36bae0161f64889eed2f3ec0e0a4
     acc.push( curr[2] === array[i + 1][2] ? [curr] : curr )
   } else if (curr[2] === array[i - 1][2]) {
     inf620(curr, array, (i-1));
