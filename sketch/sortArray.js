@@ -28,35 +28,23 @@ const xywPosFolloww = xywPosAry.reduce(followw, [])
 
 let memo = 0
 let aryMemo = []
-const arySlice = []
+let arySlice = []
 
-xywPosFolloww.map(i => {
-  i[2] === 620
-    ? ((memo = 0), arySlice.push(i))
-    : i[0][2]
-    ? memo < 620
-      ? ((memo += i[0][2]),
-        aryMemo.push(i),
-        memo == 620
-          ? ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
-          : 'null')
-      : ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
-    : memo < 620
-    ? ((memo += i[2]),
-      aryMemo.push(i),
-      memo == 620
-        ? ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
-        : 'null')
-    : ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
-})
+// building nested obj
+const followw = (acc, curr, i, array) => {
+  if (array[i - 1] === undefined) {
 
-// test profondeur tableaux
-const s = a => console.log(...a) // s(arySlice)
+    acc.push( curr[2] === array[i + 1][2] ? [curr] : curr )
+  } else if (curr[2] === array[i - 1][2]) {
+    acc[acc.length - 1].push(curr)
+  } else if (array[i + 1] === undefined) {
 
-arySlice.forEach((element,i) => {
-  console.log( s(element) ? s(element) : 'NEXT SLICE' )
-  console.log('max:', max(element))
-  console.log(`table.${i}${indent(1)}tr${indent(2)}td`)
-})
-console.log('this is the END!!!');
-// console.log(`firstline${indent(1)}secondline${indent(2)}three`)
+  } else {
+    acc.push(curr[2] === array[i + 1][2] ? [curr] : { curr: curr })
+  }
+  return acc
+}
+
+// console.log(xywPosAry)
+const xywPosFolloww = xywPosAry.reduce(followw, [])
+console.log(xywPosFolloww)
