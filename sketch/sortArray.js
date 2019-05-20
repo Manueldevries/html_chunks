@@ -59,11 +59,11 @@ xywPosFolloww.map(i=>{
       i[0][2] ?
         (
           memo += i[0][2],
-          memo < 620 ? aryMemo.push([i]) : memo = 0, arySlice.push(aryMemo), aryMemo = [], console.log('i[0][2]:'+i[0][2]+' memo:'+memo)
+          memo < 620 ? (aryMemo.push([i])) : (memo = 0, arySlice.push(aryMemo), aryMemo = [], console.log('i[0][2]:'+i[0][2]+' memo:'+memo))
         )
         :(
           memo += i[2],
-          memo < 620 ? aryMemo.push(i) : memo = 0, arySlice.push(aryMemo), aryMemo = [], console.log('i[2]:'+i[2]+' memo:'+memo)
+          memo < 620 ? aryMemo.push(i) : (memo = 0, arySlice.push(aryMemo), aryMemo = [], console.log('i[2]:'+i[2]+' memo:'+memo))
         )
   );
 })
