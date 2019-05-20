@@ -107,3 +107,17 @@ Array(3) [0, 672, 620]
 ## Solution pour filtrer les slice
 
 - @see sortArray.js -> var arySlice to get index of array.obj[{…}] to cut slice. After cut slices into nested table (based on xywPosFolloww result ?)
+
+## find depth of nested array
+```javascript
+// @see https://codegolf.stackexchange.com/questions/71476/determine-the-depth-of-an-array
+f=a=>a[0]?Math.max(...a.map(f))+1:0
+
+slice=
+[[0,0,620],
+[[[0,167,158], [0,218,158]], [158,167,254], [[412,167,208],[412,218,208],[412,276,208]]],
+[[0,330,342],[342,330,278]],
+[0,672,620],
+[[[0,682,158],[0,733,158]],[158,682,254],[[412,682,208],[412,733,208],[412,791,208]]]]
+
+```

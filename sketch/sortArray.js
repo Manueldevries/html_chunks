@@ -53,13 +53,13 @@ xywPosFolloww.map(i=>{
         :(
           memo < 620 ? (memo += i[2], aryMemo.push(i), (memo==620 ? (memo=0,arySlice.push(aryMemo),aryMemo = []) : 'null') ) : (memo = 0, arySlice.push(aryMemo), aryMemo = [])
         )
-  );
+    );
 })
 
-console.log(`arySlice:
-0_${arySlice[0]}
-\n1_${arySlice[1][0]} / ${arySlice[1][1]} / ${arySlice[1][2]}
-\n2_${arySlice[2]}
-\n3_${arySlice[3]}
-\n4_${arySlice[4]}
+console.log(`slice=
+[[${arySlice[0]}],
+[[[${arySlice[1][0][0]}], [${arySlice[1][0][1]}]], [${arySlice[1][1]}], [[${arySlice[1][2][0]}],[${arySlice[1][2][1]}],[${arySlice[1][2][2]}]]],
+[[${arySlice[2][0]}],[${arySlice[2][1]}]],
+[${arySlice[3]}],
+[[[${arySlice[4][0][0]}],[${arySlice[4][0][1]}]],[${arySlice[4][1]}],[[${arySlice[4][2][0]}],[${arySlice[4][2][1]}],[${arySlice[4][2][2]}]]]]
 `);
