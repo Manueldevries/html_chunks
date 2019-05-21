@@ -37,7 +37,7 @@ const followw = (acc, curr, i, array) => {
   return acc
 }
 
-const xywPosFolloww = xywPosAry.reduce(followw, []); console.log(xywPosFolloww)
+const xywPosFolloww = xywPosAry.reduce(followw, []); // console.log(xywPosFolloww)
 
 let memo = 0
 let aryMemo = []
@@ -56,10 +56,17 @@ xywPosFolloww.map(i=>{
     );
 })
 
-console.log(`slice=
-[[${arySlice[0]}],
-[[[${arySlice[1][0][0]}], [${arySlice[1][0][1]}]], [${arySlice[1][1]}], [[${arySlice[1][2][0]}],[${arySlice[1][2][1]}],[${arySlice[1][2][2]}]]],
-[[${arySlice[2][0]}],[${arySlice[2][1]}]],
-[${arySlice[3]}],
-[[[${arySlice[4][0][0]}],[${arySlice[4][0][1]}]],[${arySlice[4][1]}],[[${arySlice[4][2][0]}],[${arySlice[4][2][1]}],[${arySlice[4][2][2]}]]]]
-`);
+// console.log(`slice=
+// [[${arySlice[0]}],
+// [[[${arySlice[1][0][0]}], [${arySlice[1][0][1]}]], [${arySlice[1][1]}], [[${arySlice[1][2][0]}],[${arySlice[1][2][1]}],[${arySlice[1][2][2]}]]],
+// [[${arySlice[2][0]}],[${arySlice[2][1]}]],
+// [${arySlice[3]}],
+// [[[${arySlice[4][0][0]}],[${arySlice[4][0][1]}]],[${arySlice[4][1]}],[[${arySlice[4][2][0]}],[${arySlice[4][2][1]}],[${arySlice[4][2][2]}]]]]
+// `);
+// test profondeur tableaux
+s=(a)=>console.log(...a);
+s(arySlice)
+
+f=a=>a[0]?Math.max(...a.map(f))+1:0
+console.log(arySlice[4][arySlice[4].length-1][0],arySlice[4][2][0], f(arySlice[4]));
+
