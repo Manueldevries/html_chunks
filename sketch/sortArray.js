@@ -22,38 +22,51 @@ var array = [
 ]
 const newAry = array.map(clone => ({ ...clone }))
 const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width])
-let memo = 0
-let aryMemo = []
-let arySlice = []
-const inf620 = (accw, curr) =>
-  accw < 620 ? ((memo += curr[2]), aryMemo.push(curr)) : (memo = 0)
 
 // building nested obj
 const followw = (acc, curr, i, array) => {
   if (array[i - 1] === undefined) {
-    array[i][0] === 0 ? arySlice.push(['slice:'+newAry[i].name,'index:'+i]) : false
     acc.push( curr[2] === array[i + 1][2] ? [curr] : curr )
   } else if (curr[2] === array[i - 1][2]) {
-    memo
-    if (memo < 620 && curr[1] === array[i - 1][1]) {
-      memo += curr[2]
-    } else if (memo === 620) {
-      memo = 0
-    }
     acc[acc.length - 1].push(curr)
   } else if (array[i + 1] === undefined) {
-    array[i][0] === 0 ? arySlice.push(['slice:'+newAry[i].name,'index:'+i]) : false
-    acc.push(curr) // console.log('end +1 = ' + array[i + 1])
+    console.log('end');
   } else {
-    array[i][0] === 0 ? arySlice.push(['slice:'+newAry[i].name,'index:'+i]) : false
-    var show_width = array[i][2]
-    var show_next_width = array[i + 1][2]
-    inf620(memo, curr)
-    acc.push(curr[2] === array[i + 1][2] ? [curr] : { curr: curr })
+    acc.push(curr[2] === array[i + 1][2] ? [curr] : curr)
   }
   return acc
 }
 
-// console.log(xywPosAry)
-const xywPosFolloww = xywPosAry.reduce(followw, [])
-console.log(xywPosFolloww)
+const xywPosFolloww = xywPosAry.reduce(followw, []); // console.log(xywPosFolloww)
+
+let memo = 0
+let aryMemo = []
+let arySlice = []
+xywPosFolloww.map(i=>{
+  i[2] === 620 ?
+    (memo=0,arySlice.push(i))
+    :(
+      i[0][2] ?
+        (
+          memo < 620 ? ( memo += i[0][2], aryMemo.push(i), (memo==620 ? (memo=0,arySlice.push(aryMemo),aryMemo = []) : 'null') ) : (memo = 0, arySlice.push(aryMemo), aryMemo = [])
+        )
+        :(
+          memo < 620 ? (memo += i[2], aryMemo.push(i), (memo==620 ? (memo=0,arySlice.push(aryMemo),aryMemo = []) : 'null') ) : (memo = 0, arySlice.push(aryMemo), aryMemo = [])
+        )
+    );
+})
+
+// console.log(`slice=
+// [[${arySlice[0]}],
+// [[[${arySlice[1][0][0]}], [${arySlice[1][0][1]}]], [${arySlice[1][1]}], [[${arySlice[1][2][0]}],[${arySlice[1][2][1]}],[${arySlice[1][2][2]}]]],
+// [[${arySlice[2][0]}],[${arySlice[2][1]}]],
+// [${arySlice[3]}],
+// [[[${arySlice[4][0][0]}],[${arySlice[4][0][1]}]],[${arySlice[4][1]}],[[${arySlice[4][2][0]}],[${arySlice[4][2][1]}],[${arySlice[4][2][2]}]]]]
+// `);
+// test profondeur tableaux
+s=(a,b,c)=>console.log(...a,b,c);
+s(arySlice,'\n_____________\narySlice.length:',arySlice.length)
+
+f=a=>a[0]?Math.max(...a.map(f))+1:0
+console.log(arySlice[4][arySlice[4].length-1][0],arySlice[4][2][0], f(arySlice[4]));
+
