@@ -64,8 +64,8 @@ xywPosFolloww.map(i=>{
 // [[[${arySlice[4][0][0]}],[${arySlice[4][0][1]}]],[${arySlice[4][1]}],[[${arySlice[4][2][0]}],[${arySlice[4][2][1]}],[${arySlice[4][2][2]}]]]]
 // `);
 // test profondeur tableaux
-s=(a)=>console.log(...a);
-s(arySlice)
+s=(a,b,c)=>console.log(...a,b,c);
+s(arySlice,'\n_____________\narySlice.length:',arySlice.length)
 
 f=a=>a[0]?Math.max(...a.map(f))+1:0
 console.log(arySlice[4][arySlice[4].length-1][0],arySlice[4][2][0], f(arySlice[4]));
