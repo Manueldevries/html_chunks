@@ -111,7 +111,10 @@ Array(3) [0, 672, 620]
 ## find depth of nested array
 ```javascript
 // @see https://codegolf.stackexchange.com/questions/71476/determine-the-depth-of-an-array
-f=a=>a[0]?Math.max(...a.map(f))+1:0
+f=a=>a[0]?Math.max(...a.map(f))+1:0 // not sur
+// good solution
+// https://gist.github.com/hapticdata/08c9d7f9e18e2ab72e715264c251f46e
+
 
 slice=
 [[0,0,620],

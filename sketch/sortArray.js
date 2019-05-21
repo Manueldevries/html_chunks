@@ -83,11 +83,11 @@ let test2 = [[0, 1, 2], [0, 1, 2]]
 let test3 = [[0, 1, 2], [0, 1, 2], [0, 1, 2]]
 let test4 = [
   [[0, 1, 2], [0, 1, 2], [0, 1, 2]],
-  [[[[1, 2, 3], [1, 2, 3]]]],
+  [[[[[1, 2, 3], [1, 2, 3]]]], [[[[[[[0]]]]]]]],
   [1, 2, 3],
   [1, 2, 3],
 ]
-flatDeep(test4[0])
+f(test4[0])
 console.log('test1:', f(test1))
 console.log('test2:', f(test2))
 console.log('test3:', f(test3))
@@ -96,3 +96,21 @@ arySlice[4].forEach(element => {
   console.log(f(element))
   console.log(s(element))
 })
+const maxDepth = a => {
+  let maxVal = Number.MIN_VALUE
+  let item
+
+  a.forEach(val => {
+    let depth = max(val)
+    if (depth > maxVal) {
+      maxVal = depth
+      item = val
+    }
+  })
+
+  return item
+}
+const max = (a, count = 0) =>
+  Array.isArray(a) ? max(maxDepth(a), count + 1) : count
+
+console.log('max:', max(test4[1]))
