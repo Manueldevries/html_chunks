@@ -61,41 +61,25 @@ xywPosFolloww.map(i => {
 })
 
 // test profondeur tableaux
-s = (a, b, c) => console.log(...a, b, c)
-s(arySlice, '\n_____________\narySlice.length:', arySlice.length)
-var start = 0
-function flatDeep(arr1) {
-  start += 1
-  return arr1.reduce(
-    (acc, val) =>
-      // Array.isArray(val) ? acc.concat(flatDeep(val)) : acc.concat(val), []
-      Array.isArray(val)
-        ? (console.log(val, ' ', start), flatDeep(val))
-        : (console.log('not array'), (start -= 1)),
-    []
-  )
-}
+s = a => console.log(...a)
+s(arySlice)
 
-const f = a => (a[0] ? Math.max(...a.map(f)) + 1 : 0)
-
-let test1 = [0, 1, 2]
-let test2 = [[0, 1, 2], [0, 1, 2]]
-let test3 = [[0, 1, 2], [0, 1, 2], [0, 1, 2]]
-let test4 = [
-  [[0, 1, 2], [0, 1, 2], [0, 1, 2]],
-  [[[[[1, 2, 3], [1, 2, 3]]]], [[[[[[[0]]]]]]]],
-  [1, 2, 3],
-  [1, 2, 3],
+const slice = [
+  [0, 0, 620],
+  [
+    [[0, 167, 158], [0, 218, 158]],
+    [158, 167, 254],
+    [[412, 167, 208], [412, 218, 208], [412, 276, 208]],
+  ],
+  [[0, 330, 342], [342, 330, 278]],
+  [0, 672, 620],
+  [
+    [[0, 682, 158], [0, 733, 158]],
+    [158, 682, 254],
+    [[412, 682, 208], [412, 733, 208], [412, 791, 208]],
+  ],
 ]
-f(test4[0])
-console.log('test1:', f(test1))
-console.log('test2:', f(test2))
-console.log('test3:', f(test3))
-console.log('test4:', f(test4[1]))
-arySlice[4].forEach(element => {
-  console.log(f(element))
-  console.log(s(element))
-})
+
 const maxDepth = a => {
   let maxVal = Number.MIN_VALUE
   let item
@@ -112,5 +96,10 @@ const maxDepth = a => {
 }
 const max = (a, count = 0) =>
   Array.isArray(a) ? max(maxDepth(a), count + 1) : count
-
-console.log('max:', max(test4[1]))
+const space = num => / \s/ * num
+slice.forEach(element => {
+  console.log(s(element))
+  console.log('max:', max(element))
+  if (max(element) === 1)
+    console.log(`table\n${space(10)}tr\n    td\n      \nimg width=${element}`)
+})
