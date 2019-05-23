@@ -58,4 +58,5 @@ arySlice.forEach(element => {
   console.log(s(element))
   console.log('max:', max(element))
   console.log(`table${indent(1)}tr${indent(2)}td`)
+  console.log(`${indent(10, 'yolo  ')}`)
 })
