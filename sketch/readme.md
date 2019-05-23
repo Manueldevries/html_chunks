@@ -122,5 +122,11 @@ slice=
 [[0,330,342],[342,330,278]],
 [0,672,620],
 [[[0,682,158],[0,733,158]],[158,682,254],[[412,682,208],[412,733,208],[412,791,208]]]]
+```
+
+```javascript
+
+const hello = `table${indent(1)} tr`
+document.querySelector('#test').innerHTML = hello
 
 ```
