@@ -101,5 +101,5 @@ slice.forEach(element => {
   console.log(s(element))
   console.log('max:', max(element))
   if (max(element) === 1)
-    console.log(`table\n${space(10)}tr\n    td\n      \nimg width=${element}`)
+    console.log(`table\n  tr\n    td\n      img width=${element}`)
 })
