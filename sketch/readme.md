@@ -130,3 +130,9 @@ const hello = `table${indent(1)} tr`
 document.querySelector('#test').innerHTML = hello
 
 ```
+
+```node
+// "test": "echo \"Error: no test specified\" && exit 1",
+// "debug": "node --nolazy sortArray.js",
+```
+

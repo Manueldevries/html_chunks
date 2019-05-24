@@ -24,11 +24,11 @@ var array = [
 
 const newAry = array.map(clone => ({ ...clone }))
 const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width])
-const xywPosFolloww = xywPosAry.reduce(followw, []) // console.log(xywPosFolloww)
+const xywPosFolloww = xywPosAry.reduce(followw, [])
 
 let memo = 0
 let aryMemo = []
-let arySlice = []
+const arySlice = []
 
 xywPosFolloww.map(i => {
   i[2] === 620
@@ -51,12 +51,11 @@ xywPosFolloww.map(i => {
 })
 
 // test profondeur tableaux
-const s = a => console.log(...a)
-s(arySlice)
+const s = a => console.log(...a) // s(arySlice)
 
-arySlice.forEach(element => {
+arySlice.forEach((element,i) => {
   console.log(s(element))
   console.log('max:', max(element))
-  console.log(`table${indent(1)}tr${indent(2)}td`)
-  console.log(`${indent(10, 'yolo  ')}`)
+  console.log(`table.${i}${indent(1)}tr${indent(2)}td`)
 })
+// console.log(`firstline${indent(1)}secondline${indent(2)}three`)
