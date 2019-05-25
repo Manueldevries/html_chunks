@@ -54,8 +54,9 @@ xywPosFolloww.map(i => {
 const s = a => console.log(...a) // s(arySlice)
 
 arySlice.forEach((element,i) => {
-  console.log(s(element))
+  console.log( s(element) ? s(element) : 'NEXT SLICE' )
   console.log('max:', max(element))
   console.log(`table.${i}${indent(1)}tr${indent(2)}td`)
 })
+console.log('this is the END!!!');
 // console.log(`firstline${indent(1)}secondline${indent(2)}three`)
