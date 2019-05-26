@@ -10,7 +10,7 @@ function trouverSeq(objectif) {
       console.log(`cpt:${cpt}-> debut:${debut}, histo:${histo}`)
       return (
         trouver(debut + 5, '(' + histo + ' + 5)') ||
-        trouver(debut * 3, '(' + histo * ' * 3)')
+        trouver(debut * 3, '(' + histo + ' * 3)')
       )
     }
   }
