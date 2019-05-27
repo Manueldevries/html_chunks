@@ -1,13 +1,18 @@
 function trouverSeq(objectif) {
   var cpt = 0
   function trouver(debut, histo) {
-    cpt++
     if (debut === objectif) {
+      cpt++
+      console.log(`cpt:${cpt}-> debut:${debut}, histo:${histo}`)
       return histo
     } else if (debut > objectif) {
-      return null
-    } else {
+      cpt++
       console.log(`cpt:${cpt}-> debut:${debut}, histo:${histo}`)
+      return 0 // or false or null
+    } else {
+      cpt++
+      console.log(`cpt:${cpt}-> debut:${debut}, histo:${histo}`)
+      // console.log( debut + 5 )
       return (
         trouver(debut + 5, '(' + histo + ' + 5)') ||
         trouver(debut * 3, '(' + histo + ' * 3)')
@@ -19,4 +24,4 @@ function trouverSeq(objectif) {
   return trouver(1, '1')
 }
 
-console.log(trouverSeq(24));
+console.log(`trouverSeq(24):${trouverSeq(24)}`);
