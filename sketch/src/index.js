@@ -1,4 +1,4 @@
-import { indent, followw, maxDepth, max } from './function.js'
+import { indent, followw, maxDepth, max } from './function'
 var array = [
   { name: 's1', xPos: 0, yPos: 0, width: 620, height: 167 },
 
@@ -58,4 +58,4 @@ arySlice.forEach((element,i) => {
   console.log('max:', max(element))
   console.log(`table.${i}${indent(1)}tr${indent(2)}td`)
 })
-// console.log(`firstline${indent(1)}secondline${indent(2)}three`)
+console.log(`firstline${indent(1)}secondline${indent(2)}three`)
