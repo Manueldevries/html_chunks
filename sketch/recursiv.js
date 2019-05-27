@@ -1,17 +1,14 @@
 function trouverSeq(objectif) {
   var cpt = 0
   function trouver(debut, histo) {
+    console.log(`cpt:${cpt}-> debut:${debut}, histo:${histo}`)
     if (debut === objectif) {
-      cpt++
-      console.log(`cpt:${cpt}-> debut:${debut}, histo:${histo}`)
       return histo
     } else if (debut > objectif) {
       cpt++
-      console.log(`cpt:${cpt}-> debut:${debut}, histo:${histo}`)
-      return 0 // or false or null
+      return 0 // or false or null but does not get out trouver???
     } else {
       cpt++
-      console.log(`cpt:${cpt}-> debut:${debut}, histo:${histo}`)
       // console.log( debut + 5 )
       return (
         trouver(debut + 5, '(' + histo + ' + 5)') ||
