@@ -1,3 +1,4 @@
+const exeStack = {}
 function trouverSeq(objectif) {
   var cpt = 0
   function trouver(debut, histo) {
