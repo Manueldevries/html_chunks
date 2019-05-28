@@ -1,4 +1,3 @@
-const exeStack = {}
 function trouverSeq(objectif) {
   var cpt = 0
   function trouver(debut, histo) {
@@ -11,10 +10,7 @@ function trouverSeq(objectif) {
     } else {
       cpt++
       console.log( debut + 5 )
-      return (
-        trouver(debut + 5, '(' + histo + ' + 5)') ||
-        trouver(debut * 3, '(' + histo + ' * 3)')
-      )
+      return ( trouver(debut+5) || trouver(debut*3) )
     }
   }
   // exe trouver(debut:1,histo:"1")
