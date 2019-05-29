@@ -1,17 +1,24 @@
-function test(objectif, length){
+const rmsp = (sentence) => sentence[sentence.length-1] === ' ' ? sentence+'lorems ipsum ' : sentence+' lorem ipsum '
+function test(objectif, obLgth){
 
   function verif(debut){
-    if(debut.length === length){
-      return `ton argument:${debut} est pil à ${length}`
-    }else if(debut.length < length) {
-      console.log(`objectif trop court: ${debut.length}, objectif: ${debut} `)
-      return verif(debut+'.')
-      // return null
+    if(debut.length === obLgth){
+      return `ton argument:${debut} est pil à ${obLgth}`
+    }else if(debut.length > obLgth) {
+      console.log(`ligne trop longue: ${debut.length}, objectif: ${debut} `)
+      return null
+    }else{
+      console.log(`verif(rmsp(debut)) ?: ${verif(rmsp(debut))}, verif(debut+' de ') ?: ${verif(debut+' de ')}`);
+      return (
+        // exe(odd) || exe(even)
+        verif(rmsp(debut)) ||
+        verif(debut+' de ')
+      )
     }
   }
   return verif(objectif)
 }
 
 console.log(
-  test('un paragraphe',20)
+  test('un paragraphe',75)
 );
