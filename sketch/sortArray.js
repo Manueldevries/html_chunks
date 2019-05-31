@@ -16,9 +16,9 @@ const nest = (elt, cr_bool) => {
 const sortRow = (elt, cr_bool) => {
   // return Array.isArray(elt) ? elt.map(i => `array: ${i}`) : creatTD(elt)
   if (max(elt) === 1) {
-    return `${indent(1,cr_bool)}${indent(2)}td__ ${elt}`
+    return console.log(`${indent(1,cr_bool)}${indent(2)}td__ ${elt}`)
   } else {
-    return elt.map((i) => (max(i) > 1 ? nest(i, false) : sortRow(i)))
+    return elt.map((i) => (max(i) > 1 ? nest(i, false) : console.log(sortRow(i)) ))
   }
 }
 
@@ -27,9 +27,9 @@ arySlice.forEach((element, i) => {
   i === 0 ? console.log('start') : console.log(`${indent(1)}tr`);
   if (i === 0) {
     console.log(`table.${i}${indent(1,true)}tr `)
-    console.log(`${sortRow(element, false)} i:${i} `)
+    sortRow(element, false); console.log(`i:${i} `)
   } else {
-    console.log(`${sortRow(element, false)} i:${i} `)
+    sortRow(element, false);console.log(`i:${i} `)
   }
 })
 console.log('this is the END!!!', arySlice)
