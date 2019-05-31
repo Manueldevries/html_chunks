@@ -27,9 +27,9 @@ arySlice.forEach((element, i) => {
   i === 0 ? console.log('start') : console.log(`${indent(1)}tr`);
   if (i === 0) {
     console.log(`table.${i}${indent(1,true)}tr `)
-    console.log(`${sortRow(element, false)} `)
+    console.log(`${sortRow(element, false)} i:${i} `)
   } else {
-    console.log(`${sortRow(element, false)} `)
+    console.log(`${sortRow(element, false)} i:${i} `)
   }
 })
-console.log('this is the END!!!')
+console.log('this is the END!!!', arySlice)

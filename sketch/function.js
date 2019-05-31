@@ -49,7 +49,7 @@ var array = [
   { name: 's3c1', xPos: 0, yPos: 330, width: 342, height: 102 },
   { name: 's3c2', xPos: 342, yPos: 330, width: 278, height: 102 },
 
-  { name: 's4', xPos: 0, yPos: 672, width: 620 },
+  { name: 's4', xPos: 0, yPos: 672, width: 620, height: 10 },
 
   { name: 's5c1s1', xPos: 0, yPos: 682, width: 158, height: 51 },
   { name: 's5c1s2', xPos: 0, yPos: 733, width: 158, height: 112 },
@@ -59,8 +59,7 @@ var array = [
   { name: 's5c3s3', xPos: 412, yPos: 791, width: 208, height: 54 },
 ]
 
-const newAry = array.map(clone => ({ ...clone }))
-const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width])
+const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width, item.height])
 const xywPosFolloww = xywPosAry.reduce(followw, [])
 
 let memo = 0
@@ -71,19 +70,20 @@ xywPosFolloww.map(i => {
   i[2] === 620
     ? ((memo = 0), arySlice.push(i))
     : i[0][2]
-    ? memo < 620
-      ? ((memo += i[0][2]),
+      ? memo < 620
+        ? ((memo += i[0][2]),
         aryMemo.push(i),
         memo == 620
           ? ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
           : 'null')
-      : ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
-    : memo < 620
-    ? ((memo += i[2]),
-      aryMemo.push(i),
-      memo == 620
-        ? ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
-        : 'null')
-    : ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
+        : ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
+      : memo < 620
+        ? ((memo += i[2]),
+        aryMemo.push(i),
+        memo == 620
+          ? ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
+          : 'null')
+        : ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
 })
+
 export { arySlice }
