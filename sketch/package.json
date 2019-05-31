@@ -8,5 +8,8 @@
     "start": "http-server -c-1 -p 8080"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "fs": "0.0.1-security"
+  }
 }

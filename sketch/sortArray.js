@@ -1,5 +1,5 @@
-import { indent, followw, arySlice, maxDepth, max, s } from './function.js'
-
+import { indent, arySlice, max } from './function.js'
+// var fs = require('fs');
 const nest = (elt, cr_bool) => {
   if(elt.length > 1){
     // console.log(`elt: ${elt} -> length`, elt.length);
