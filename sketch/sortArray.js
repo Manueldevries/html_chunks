@@ -24,27 +24,19 @@ var array = [
 
 const newAry = array.map(clone => ({ ...clone }))
 const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width])
-<<<<<<< HEAD
-const xywPosFolloww = xywPosAry.reduce(followw, [])
-
-let memo = 0
-let aryMemo = []
-let arySlice = []
-=======
->>>>>>> store array in sub
 
 // building nested obj
-const followw = (acc, curr, i, array) => {
-  if (array[i - 1] === undefined) {
-    acc.push( curr[2] === array[i + 1][2] ? [curr] : curr )
-  } else if (curr[2] === array[i - 1][2]) {
-    acc[acc.length - 1].push(curr)
-  } else if (array[i + 1] === undefined) {
-  } else {
-    acc.push(curr[2] === array[i + 1][2] ? [curr] : curr)
-  }
-  return acc
-}
+// const followw = (acc, curr, i, array) => {
+//   if (array[i - 1] === undefined) {
+//     acc.push( curr[2] === array[i + 1][2] ? [curr] : curr )
+//   } else if (curr[2] === array[i - 1][2]) {
+//     acc[acc.length - 1].push(curr)
+//   } else if (array[i + 1] === undefined) {
+//   } else {
+//     acc.push(curr[2] === array[i + 1][2] ? [curr] : curr)
+//   }
+//   return acc
+// }
 
 const xywPosFolloww = xywPosAry.reduce(followw, []); console.log(xywPosFolloww)
 
