@@ -59,7 +59,7 @@ var array = [
   { name: 's5c3s3', xPos: 412, yPos: 791, width: 208, height: 54 },
 ]
 
-const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width, item.height])
+const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width, item.height, item.name])
 const xywPosFolloww = xywPosAry.reduce(followw, [])
 
 let memo = 0
