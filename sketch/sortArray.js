@@ -7,7 +7,7 @@ const nest = (elt, cr_bool) => {
       if(x === 0){
         return console.log(`${indent(1, cr_bool)}${indent(2)}td${indent(3)}table${indent(4)}tr${indent(5)}td ${i} `)
       }else{
-        return console.log(`${indent(4,cr_bool)}${indent(5)}td ${i} `)
+        return console.log(`${indent(4,cr_bool)}tr${indent(5)}td ${i} `)
       }
     })
   }
