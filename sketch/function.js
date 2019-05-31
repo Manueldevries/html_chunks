@@ -1,6 +1,7 @@
-export const indent = (nb = 1, char = '\u0020\u0020') => {
-  var sp = ['\n']
-  for (var i = 0; i < nb; i++) sp.push(char)
+export const indent = (nb = 1, ret=true) => {
+  var sp;
+  ret ? sp = ['\n'] : sp = []
+  for (var i = 0; i < nb; i++) sp.push('\u0020\u0020')
   return sp.join('')
 }
 // building nested obj
