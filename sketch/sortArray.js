@@ -97,18 +97,10 @@ xywPosFolloww.map(i => {
 
 // var fs = require('fs');
 const nest = (elt, cr_bool) => {
-  if(elt.length > 1){
-    // console.log(`elt: ${elt} -> length`, elt.length);
-    elt.map( (i,x) => {
-      if(x === 0){
-        console.log('ok_ici');
-        return console.log(`${indent(1, cr_bool)}${indent(2)}td${indent(3)}table${indent(4)}tr${indent(5)}td${indent(6)}table${indent(7)}tr${indent(8)}td ${i} `)
-      }else{
-        // console.log('pas là');
-        return console.log(`${indent(7,cr_bool)}tr${indent(8)}td ${i} `)
-      }
-    })
-  }
+  console.log(`${indent(2, cr_bool)}td${indent(3, true)}table${indent(4, true)}tr`);
+  elt.map( (i,x) => {
+    return console.log(`${indent(5, false)}td`),console.log(i),console.log(max(i));
+  })
 }
 
 const sortRow = (elt, cr_bool) => {
@@ -142,7 +134,7 @@ arySlice.forEach((element, i) => {
     // td niv 1 = td table tr td * element
     sortRow(element, false)
   }else{
-    // nest(element,false)
+    nest(element,false)
   }
 })
 
