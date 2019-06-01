@@ -104,6 +104,7 @@ const nest = (elt, cr_bool) => {
         console.log('ok_ici');
         return console.log(`${indent(1, cr_bool)}${indent(2)}td${indent(3)}table${indent(4)}tr${indent(5)}td${indent(6)}table${indent(7)}tr${indent(8)}td ${i} `)
       }else{
+        // console.log('pas là');
         return console.log(`${indent(7,cr_bool)}tr${indent(8)}td ${i} `)
       }
     })
@@ -112,26 +113,33 @@ const nest = (elt, cr_bool) => {
 
 const sortRow = (elt, cr_bool) => {
   // return Array.isArray(elt) ? elt.map(i => `array: ${i}`) : creatTD(elt)
+  const td_0 = `${indent(2, cr_bool)}td${indent(3)}img src="${elt[4]}" width="${elt[2]}" height="${elt[3]}"`
   if (max(elt) === 1) {
-    return console.log(`${indent(1,cr_bool)}${indent(2)}td ${elt}`)
+    // write td niv 0 et 1
+    return console.log(td_0)
   } else {
+    console.log(`${indent(2, cr_bool)}td${indent(3, true)}table${indent(4, true)}tr`);
     return elt.map(
-      (i) => (max(i) > 1 ?
-        nest(i, false)
-        : sortRow(i) ? console.log(sortRow(i)) : cr_bool = false
-      )
+      (i) => {
+        console.log(`${indent(5,false)}td${indent(6)}img src="${i[4]}" width="${i[2]}" height="${i[3]}"`);
+      }
     )
   }
 }
 
 arySlice.forEach((element, i) => {
   // console.log(s(element) ? s(element) : 'NEXT SLICE')
-  i === 0 ? console.log('start') : console.log(`${indent(1)}tr`);
+  // first table : tr
+  i === 0 ? console.log(`table._${i}${indent(1,true)}tr`) : console.log(`${indent(1,false)}tr`);
   if (i === 0) {
-    console.log(`table._${i}${indent(1,true)}tr `)
+    // console.log(`table._${i}${indent(1,true)}tr`)
     sortRow(element, false)
-  } else {
+  } else if(max(element) <= 1) {
+    // td niv 0 = td img src=element
+    sortRow(element, false)
+  } else if(max(element) === 2){
+    // td niv 1 = td table tr td * element
     sortRow(element, false)
   }
 })
-console.log('this is the END!!!', arySlice)
+
