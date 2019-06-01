@@ -114,11 +114,12 @@ const nest = (elt, cr_bool) => {
 const sortRow = (elt, cr_bool) => {
   // return Array.isArray(elt) ? elt.map(i => `array: ${i}`) : creatTD(elt)
   const td_0 = `${indent(2, cr_bool)}td${indent(3)}img src="${elt[4]}" width="${elt[2]}" height="${elt[3]}"`
+  const td_1 = `${indent(2, cr_bool)}td${indent(3, true)}table${indent(4, true)}tr`
   if (max(elt) === 1) {
     // write td niv 0 et 1
     return console.log(td_0)
   } else {
-    console.log(`${indent(2, cr_bool)}td${indent(3, true)}table${indent(4, true)}tr`);
+    console.log(td_1);
     return elt.map(
       (i) => {
         console.log(`${indent(5,false)}td${indent(6)}img src="${i[4]}" width="${i[2]}" height="${i[3]}"`);
@@ -140,6 +141,8 @@ arySlice.forEach((element, i) => {
   } else if(max(element) === 2){
     // td niv 1 = td table tr td * element
     sortRow(element, false)
+  }else{
+    // nest(element,false)
   }
 })
 
