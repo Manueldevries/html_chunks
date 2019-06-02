@@ -94,19 +94,23 @@ xywPosFolloww.map(i => {
           : 'null')
         : ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
 })
-
-// var fs = require('fs');
+// output
+const t0 = 'table border=\'0\' cellpadding=\'0\' cellspacing=\'0\''
 const nest = (elt, cr_bool) => {
-  console.log(`${indent(2, cr_bool)}td${indent(3, true)}table${indent(4, true)}tr`);
-  elt.map( (i,x) => {
-    return console.log(`${indent(5, false)}td`),console.log(i),console.log(max(i));
+  console.log(`${indent(2, cr_bool)}td${indent(3, true)}${t0}${indent(4, true)}tr`);
+  elt.map( (i) => {
+    if(max(i) === 1){
+      return console.log(`${indent(5,false)}td${indent(6)}img src="${i[4]}" width="${i[2]}" height="${i[3]}"`);
+    }else{
+      return console.log( `${indent(5, false)}td${indent(6)}${t0}`),
+      i.map(i => console.log(`${indent(7,false)}tr${indent(8)}td${indent(9)}img src="${i[4]}" width="${i[2]}" height="${i[3]}"`))
+    }
   })
 }
 
 const sortRow = (elt, cr_bool) => {
-  // return Array.isArray(elt) ? elt.map(i => `array: ${i}`) : creatTD(elt)
   const td_0 = `${indent(2, cr_bool)}td${indent(3)}img src="${elt[4]}" width="${elt[2]}" height="${elt[3]}"`
-  const td_1 = `${indent(2, cr_bool)}td${indent(3, true)}table${indent(4, true)}tr`
+  const td_1 = `${indent(2, cr_bool)}td${indent(3, true)}${t0}${indent(4, true)}tr`
   if (max(elt) === 1) {
     // write td niv 0 et 1
     return console.log(td_0)
@@ -123,9 +127,8 @@ const sortRow = (elt, cr_bool) => {
 arySlice.forEach((element, i) => {
   // console.log(s(element) ? s(element) : 'NEXT SLICE')
   // first table : tr
-  i === 0 ? console.log(`table._${i}${indent(1,true)}tr`) : console.log(`${indent(1,false)}tr`);
+  i === 0 ? console.log(`${t0} class='first${i}'${indent(1,true)}tr`) : console.log(`${indent(1,false)}tr`);
   if (i === 0) {
-    // console.log(`table._${i}${indent(1,true)}tr`)
     sortRow(element, false)
   } else if(max(element) <= 1) {
     // td niv 0 = td img src=element
