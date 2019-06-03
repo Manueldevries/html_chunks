@@ -1,12 +1,12 @@
-// var fs = require('fs');
-// var util = require('util');
-// var log_file = fs.createWriteStream(__dirname + '/_content.slim', {flags : 'w'});
-// var log_stdout = process.stdout;
+var fs = require('fs');
+var util = require('util');
+var log_file = fs.createWriteStream(__dirname + '/_content.slim', {flags : 'w'});
+var log_stdout = process.stdout;
 
-// console.log = function(d) { //
-//   log_file.write(util.format(d) + '\n');
-//   log_stdout.write(util.format(d) + '\n');
-// };
+console.log = function(d) { //
+  log_file.write(util.format(d) + '\n');
+  log_stdout.write(util.format(d) + '\n');
+};
 
 const indent = (nb = 1, ret=true) => {
   var sp;
@@ -128,7 +128,7 @@ const sortRow = (elt, cr_bool) => {
 arySlice.forEach((element, i) => {
   // console.log(s(element) ? s(element) : 'NEXT SLICE')
   // first table : tr
-  i === 0 ? console.log(`${t0} class=level_${i} ${indent(1,true)}tr`) : console.log(`${indent(1,false)}tr`);
+  i === 0 ? console.log(`${t0} class='level_${i}'${indent(1,true)}tr`) : console.log(`${indent(1,false)}tr`);
   if (i === 0) {
     sortRow(element, false)
   } else if(max(element) <= 1) {
