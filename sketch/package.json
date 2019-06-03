@@ -11,5 +11,9 @@
   "license": "ISC",
   "devDependencies": {
     "fs": "0.0.1-security"
+  },
+  "dependencies": {
+    "g": "^2.0.1",
+    "nodemon": "^1.19.1"
   }
 }
