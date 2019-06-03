@@ -129,16 +129,10 @@ arySlice.forEach((element, i) => {
   // console.log(s(element) ? s(element) : 'NEXT SLICE')
   // first table : tr
   i === 0 ? console.log(`${t0} class='level_${i}'${indent(1,true)}tr`) : console.log(`${indent(1,false)}tr`);
-  if (i === 0) {
-    sortRow(element, false)
-  } else if(max(element) <= 1) {
-    // td niv 0 = td img src=element
-    sortRow(element, false)
-  } else if(max(element) === 2){
-    // td niv 1 = td table tr td * element
-    sortRow(element, false)
-  }else{
-    nest(element,false)
-  }
+  sortSlice(i, element);
 })
 
+function sortSlice(i, element) {
+  // ? td niv 0 = td img src=element
+  max(element) === (0 || 1 || 2) ? sortRow(element, false) : nest(element, false);
+}
