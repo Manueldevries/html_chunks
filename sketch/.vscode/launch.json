@@ -8,7 +8,8 @@
       "type": "node",
       "request": "launch",
       "name": "node local file",
-      "runtimeArgs": ["--experimental-modules"],
+      // "runtimeArgs": ["--experimental-modules"],
+      "runtimeArgs": ["-r", "esm"],
       "program": "${file}"
     },
     {
@@ -20,8 +21,6 @@
       // "runtimeArgs": ["--disable-web-security"],
       // "file": "${workspaceFolder}/index.html"
       "webRoot": "${workspaceFolder}/index.html"
-      // use module function.js :
-      // python -m SimpleHTTPServer 8080
     }
   ]
 }
