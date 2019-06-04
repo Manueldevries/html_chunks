@@ -1,6 +1,12 @@
 import * as sk from './sk.json'
-var array = Array.from(sk)
-// console.log(Array.from(array).map(i=>i));
+const array = Array.from(sk)
+// https://medium.com/elp-2018/la-curryfication-au-coeur-de-la-programmation-fonctionnelle-5fd50ce0e858
+const possedAttr = (obj,item) => item.width == obj
+const acChapeau = array.filter(x => possedAttr(620,x))
+console.log(`acChapeau: ${acChapeau}`,
+  acChapeau.map(i => i.name)
+);
+
 export const indent = (nb = 1, ret=true) => {
   var sp;
   ret ? sp = ['\n'] : sp = []

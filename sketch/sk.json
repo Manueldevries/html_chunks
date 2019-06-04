@@ -1,5 +1,5 @@
 [
-  { "name": "s1", "xPos": 0, "yPos": 0, "width": 620, "height": 167 },
+  { "name": "s1", "xPos": 0, "yPos": 0, "width": 620, "height": 167, "objet": "chapeau" },
 
   { "name": "s2c1s1", "xPos": 0, "yPos": 167, "width": 158, "height": 51 },
   { "name": "s2c1s2", "xPos": 0, "yPos": 218, "width": 158, "height": 112 },
