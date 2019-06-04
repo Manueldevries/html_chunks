@@ -1,12 +1,15 @@
-var fs = require('fs');
-var util = require('util');
-var log_file = fs.createWriteStream(__dirname + '/_content.slim', {flags : 'w'});
-var log_stdout = process.stdout;
-console.log = function(d) { //
-  log_file.write(util.format(d) + '\n');
-  log_stdout.write(util.format(d) + '\n');
-};
-import { indent, arySlice, max } from './function.js'
+// {
+//   var fs = require('fs');
+//   var util = require('util');
+//   var log_file = fs.createWriteStream(__dirname + '/_content.slim', {flags : 'w'});
+//   var log_stdout = process.stdout;
+//   console.log = function(d) { //
+//     log_file.write(util.format(d) + '\n');
+//     log_stdout.write(util.format(d) + '\n');
+//   }
+// }
+import { indent, arySlice, max } from './function'
+
 // output
 const t0 = 'table border=\'0\' cellpadding=\'0\' cellspacing=\'0\''
 const nest = (elt, cr_bool) => {
