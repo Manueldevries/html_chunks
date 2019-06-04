@@ -8,6 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "node local file",
+      "runtimeArgs": ["--experimental-modules"],
       "program": "${file}"
     },
     {
@@ -15,6 +16,7 @@
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:8080",
+      "runtimeArgs": ["--experimental-modules"],
       // "runtimeArgs": ["--disable-web-security"],
       // "file": "${workspaceFolder}/index.html"
       "webRoot": "${workspaceFolder}/index.html"
