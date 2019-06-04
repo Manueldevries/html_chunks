@@ -1,4 +1,4 @@
-import { indent, arySlice, max } from './function.js'
+import { indent, arySlice, max } from './function.mjs'
 // var fs = require('fs');
 const nest = (elt, cr_bool) => {
   if(elt.length > 1){
