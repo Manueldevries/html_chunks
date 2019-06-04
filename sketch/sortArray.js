@@ -1,12 +1,14 @@
-var fs = require('fs');
-var util = require('util');
-var log_file = fs.createWriteStream(__dirname + '/_content.slim', {flags : 'w'});
-var log_stdout = process.stdout;
-
-console.log = function(d) { //
-  log_file.write(util.format(d) + '\n');
-  log_stdout.write(util.format(d) + '\n');
-};
+const fs    = require('fs')
+const util  = require('util')
+const array = require('./sk.json')
+const test  = require('./func')
+// change clg by output to file :
+// var log_file = fs.createWriteStream(__dirname + '/_content.slim', {flags : 'w'});
+// var log_stdout = process.stdout;
+// console.log = function(d) { //
+//   log_file.write(util.format(d) + '\n');
+//   log_stdout.write(util.format(d) + '\n');
+// };
 
 const indent = (nb = 1, ret=true) => {
   var sp;
@@ -43,31 +45,6 @@ const maxDepth = a => {
 
   return item
 }
-
-const s = a => console.log(...a)
-// sort slice
-var array = [
-  { name: 's1', xPos: 0, yPos: 0, width: 620, height: 167 },
-
-  { name: 's2c1s1', xPos: 0, yPos: 167, width: 158, height: 51 },
-  { name: 's2c1s2', xPos: 0, yPos: 218, width: 158, height: 112 },
-  { name: 's2c2', xPos: 158, yPos: 167, width: 254, height: 163 },
-  { name: 's2c3s1', xPos: 412, yPos: 167, width: 208, height: 51 },
-  { name: 's2c3s2', xPos: 412, yPos: 218, width: 208, height: 58 },
-  { name: 's2c3s3', xPos: 412, yPos: 276, width: 208, height: 54 },
-
-  { name: 's3c1', xPos: 0, yPos: 330, width: 342, height: 102 },
-  { name: 's3c2', xPos: 342, yPos: 330, width: 278, height: 102 },
-
-  { name: 's4', xPos: 0, yPos: 672, width: 620, height: 10 },
-
-  { name: 's5c1s1', xPos: 0, yPos: 682, width: 158, height: 51 },
-  { name: 's5c1s2', xPos: 0, yPos: 733, width: 158, height: 112 },
-  { name: 's5c2', xPos: 158, yPos: 682, width: 254, height: 163 },
-  { name: 's5c3s1', xPos: 412, yPos: 682, width: 208, height: 51 },
-  { name: 's5c3s2', xPos: 412, yPos: 733, width: 208, height: 58 },
-  { name: 's5c3s3', xPos: 412, yPos: 791, width: 208, height: 54 },
-]
 
 const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width, item.height, item.name])
 const xywPosFolloww = xywPosAry.reduce(followw, [])
