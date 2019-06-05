@@ -3,8 +3,8 @@ const array = Array.from(sk)
 // https://medium.com/elp-2018/la-curryfication-au-coeur-de-la-programmation-fonctionnelle-5fd50ce0e858
 const checkAttrVal = (value,item) => item.width == value
 const whidtMax = array.filter(x => checkAttrVal(620,x))
-console.log( `whidtMax Array.isArray: ${Array.isArray(whidtMax)}`)
-whidtMax.map(i => console.log(`${[i.name]}:${[i.width]}`) )
+const check = (value,item) => item.width < value
+const inf620 = array.map(i=>check(620,i))
 
 // output
 export const indent = (nb = 1, ret=true) => {
@@ -50,28 +50,31 @@ const followw = (acc, curr, i, array) => {
 const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width, item.height, item.name])
 const xywPosFolloww = xywPosAry.reduce(followw, [])
 
-let memo = 0
-let aryMemo = []
+let accWidth = 0
+let aryTps = []
 const arySlice = []
-
-xywPosFolloww.map(i => {
+console.log(xywPosFolloww[1]);
+console.log(max(xywPosFolloww[1]));
+xywPosFolloww.map((i,x,j) => {
   i[2] === 620
-    ? ((memo = 0), arySlice.push(i))
-    : i[0][2]
-      ? memo < 620
-        ? ((memo += i[0][2]),
-        aryMemo.push(i),
-        memo == 620
-          ? ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
+    ? ( accWidth = 0, arySlice.push(i) )
+    : i[0][2] ?
+
+      (accWidth < 620
+        ? (
+          (accWidth += i[0][2]),
+          aryTps.push(i),
+          accWidth == 620 ? ( accWidth = 0, arySlice.push(aryTps), aryTps = [] ) : 'null'
+        )
+        : ( accWidth = 0, arySlice.push(aryTps), aryTps = [] ))
+
+      : (accWidth < 620
+        ? ( accWidth += i[2],
+        aryTps.push(i),
+        accWidth == 620
+          ? ( accWidth = 0, arySlice.push(aryTps), aryTps = [] )
           : 'null')
-        : ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
-      : memo < 620
-        ? ((memo += i[2]),
-        aryMemo.push(i),
-        memo == 620
-          ? ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
-          : 'null')
-        : ((memo = 0), arySlice.push(aryMemo), (aryMemo = []))
+        : ( accWidth = 0, arySlice.push(aryTps), aryTps = [] ))
 })
 
 export { arySlice }
