@@ -6,23 +6,14 @@ const whidtMax = array.filter(x => checkAttrVal(620,x))
 console.log( `whidtMax Array.isArray: ${Array.isArray(whidtMax)}`)
 whidtMax.map(i => console.log(`${[i.name]}:${[i.width]}`) )
 
+// output
 export const indent = (nb = 1, ret=true) => {
   var sp;
   ret ? sp = ['\n'] : sp = []
   for (var i = 0; i < nb; i++) sp.push('\u0020\u0020')
   return sp.join('')
 }
-// building nested obj
-export const followw = (acc, curr, i, array) => {
-  if (array[i - 1] === undefined) {
-    acc.push(curr[2] === array[i + 1][2] ? [curr] : curr)
-  } else if (curr[2] === array[i - 1][2]) {
-    acc[acc.length - 1].push(curr)
-  } else {
-    acc.push(curr[2] === array[i + 1][2] ? [curr] : curr)
-  }
-  return acc
-}
+
 // depth of array
 export const max = (a, count = 0) =>
   Array.isArray(a) ? max(maxDepth(a), count + 1) : count
@@ -43,6 +34,18 @@ export const maxDepth = a => {
 }
 
 export const s = a => console.log(...a)
+
+// building nested obj
+const followw = (acc, curr, i, array) => {
+  if (array[i - 1] === undefined) {
+    acc.push(curr[2] === array[i + 1][2] ? [curr] : curr)
+  } else if (curr[2] === array[i - 1][2]) {
+    acc[acc.length - 1].push(curr)
+  } else {
+    acc.push(curr[2] === array[i + 1][2] ? [curr] : curr)
+  }
+  return acc
+}
 
 const xywPosAry = array.map(item => [item.xPos, item.yPos, item.width, item.height, item.name])
 const xywPosFolloww = xywPosAry.reduce(followw, [])
