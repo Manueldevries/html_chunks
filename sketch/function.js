@@ -1,11 +1,10 @@
 import * as sk from './sk.json'
 const array = Array.from(sk)
 // https://medium.com/elp-2018/la-curryfication-au-coeur-de-la-programmation-fonctionnelle-5fd50ce0e858
-const possedAttr = (obj,item) => item.width == obj
-const acChapeau = array.filter(x => possedAttr(620,x))
-console.log(`acChapeau: ${acChapeau}`,
-  acChapeau.map(i => i.name)
-);
+const checkAttrVal = (value,item) => item.width == value
+const whidtMax = array.filter(x => checkAttrVal(620,x))
+console.log( `whidtMax Array.isArray: ${Array.isArray(whidtMax)}`)
+whidtMax.map(i => console.log(`${[i.name]}:${[i.width]}`) )
 
 export const indent = (nb = 1, ret=true) => {
   var sp;
