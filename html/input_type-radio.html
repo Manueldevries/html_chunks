@@ -5,37 +5,53 @@
     <title></title>
   </head>
   <body>
-    <p>Select a maintenance drone:</p>
+    <p>Select a maintenance delivery-mode:</p>
     <div>
-      <input type="radio" id="huey" name="drone" value="huey"
-                                                 checked>
-      <label for="huey">Huey</label>
+      <input type="radio" id="home" name="delivery-mode" value="home" onclick="resetNestedChecked()">
+      <label for="home">Domicile</label>
       <ul>
         <li>
-          <input type="radio" id="huey-sub-1" name="drone-sub" value="huey-sub-1" >
-          <label for="huey-sub-1">Huey-sub-1</label>
+          <input type="radio" id="home-sub-1" name="delivery-mode-sub" value="home-10jours" >
+          <label for="home-sub-1">Livraison sous 10 jours</label>
         </li>
         <li>
-          <input type="radio" id="huey-sub-2" name="drone-sub" value="huey-sub-2" >
-          <label for="huey-sub-2">Huey-sub-2</label>
+          <input type="radio" id="home-sub-2" name="delivery-mode-sub" value="home-72heures" >
+          <label for="home-sub-2">Livraison sous 72h</label>
+        </li>
+        <li>
+          <input type="radio" id="home-sub-3" name="delivery-mode-sub" value="home-24heures" >
+          <label for="home-sub-3">Livraison sous 24h</label>
         </li>
       </ul>
+      <button onclick="promptValue()">ok</button>
     </div>
 
     <div>
-      <input type="radio" id="dewey" name="drone" value="dewey">
-      <label for="dewey">Dewey</label>
+      <input type="radio" id="relais" name="delivery-mode" value="relais" onclick="resetNestedChecked()">
+      <label for="relais">Point relais</label>
       <ul>
         <li>
-          <input type="radio" id="dewey-sub-1" name="drone-sub" value="dewey-sub-1" >
-          <label for="dewey-sub-1">Dewey-sub-1</label>
+          <input type="radio" id="relais-sub-1" name="delivery-mode-sub" value="relais-10jours" >
+          <label for="relais-sub-1">Livraison sous 10 jours</label>
         </li>
         <li>
-          <input type="radio" id="dewey-sub-2" name="drone-sub" value="dewey-sub-2" >
-          <label for="dewey-sub-2">Dewey-sub-2</label>
+          <input type="radio" id="relais-sub-2" name="delivery-mode-sub" value="relais-48h" >
+          <label for="relais-sub-2">Livraison sous 48h</label>
         </li>
       </ul>
+      <button onclick="promptValue()">ok</button>
 
     </div>
+    <script>
+      function resetNestedChecked(){
+        const selectedNestedInput = [...document.querySelectorAll('ul li input:checked')]
+        // console.log('nested input:', selectedNestedInput);
+        selectedNestedInput.map(i => i.checked = false)
+      }
+      function promptValue(){
+        const inputValue = [...document.querySelectorAll('input:checked')]
+        console.log(inputValue.map(i => i.value));
+      }
+    </script>
   </body>
 </html>
