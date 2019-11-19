@@ -4,23 +4,29 @@
     <meta content="text/html;charset=UTF-8" http-equiv="Content-Type"/>
     <title>Radio checked</title>
     <style>
+      .delivery__content {
+        margin-bottom: 8px;
+        outline: solid;
+
+      }
+
       .delivery__list {
-        padding: 1em;
+        padding: 0;
         overflow: hidden;
         transform: rotateX(-90deg);
         transform-origin: top;
         transition: all 0.4s ease-in-out;
       }
-
+      
       input ~ .delivery__list {
         height: 0;
+        padding: 1em;
         opacity: 1;
       }
 
       input:checked ~ .delivery__list {
         height: auto;
         transform: rotateX(0deg);
-        outline: solid;
         opacity: 1;
       }
     </style>
