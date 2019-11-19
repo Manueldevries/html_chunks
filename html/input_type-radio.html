@@ -1,45 +1,73 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTDXHTML1.0Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-    <title></title>
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-Type"/>
+    <title>Radio checked</title>
+    <style>
+      .delivery__list {
+        padding: 1em;
+        overflow: hidden;
+        transform: rotateX(-90deg);
+        transform-origin: top;
+        transition: all 0.4s ease-in-out;
+      }
+
+      input ~ .delivery__list {
+        height: 0;
+        opacity: 1;
+      }
+
+      input:checked ~ .delivery__list {
+        height: auto;
+        transform: rotateX(0deg);
+        outline: solid;
+        opacity: 1;
+      }
+    </style>
+
   </head>
   <body>
-    <p>Select a maintenance delivery-mode:</p>
-    <div>
-      <input type="radio" id="home" name="delivery-mode" value="home" onclick="resetNestedChecked()">
-      <label for="home">Domicile</label>
-      <ul>
-        <li>
-          <input type="radio" id="home-sub-1" name="delivery-mode-sub" value="home-10jours" >
-          <label for="home-sub-1">Livraison sous 10 jours</label>
-        </li>
-        <li>
-          <input type="radio" id="home-sub-2" name="delivery-mode-sub" value="home-72heures" >
-          <label for="home-sub-2">Livraison sous 72h</label>
-        </li>
-        <li>
-          <input type="radio" id="home-sub-3" name="delivery-mode-sub" value="home-24heures" >
-          <label for="home-sub-3">Livraison sous 24h</label>
-        </li>
-      </ul>
-      <button onclick="promptValue()">ok</button>
-    </div>
+    <div class="delivery">
+      <p>Choose delivery-mode:</p>
+      <div class="delivery__content">
+        <input id="home" name="delivery-mode" onclick="resetNestedChecked()" type="radio" value="home">
+        <label for="home">Domicile</label>
+        <div class="delivery__list">
+          <ul>
+            <li>
+              <input id="home-sub-1" name="delivery-mode-sub" type="radio" value="home-10jours">
+              <label for="home-sub-1">Livraison sous 10 jours</label>
+            </li>
+            <li>
+              <input id="home-sub-2" name="delivery-mode-sub" type="radio" value="home-72heures">
+              <label for="home-sub-2">Livraison sous 72h</label>
+            </li>
+            <li>
+              <input id="home-sub-3" name="delivery-mode-sub" type="radio" value="home-24heures">
+              <label for="home-sub-3">Livraison sous 24h</label>
+            </li>
+          </ul>
+          <button onclick="promptValue()">ok</button>
+        </div>
+      </div>
 
-    <div>
-      <input type="radio" id="relais" name="delivery-mode" value="relais" onclick="resetNestedChecked()">
-      <label for="relais">Point relais</label>
-      <ul>
-        <li>
-          <input type="radio" id="relais-sub-1" name="delivery-mode-sub" value="relais-10jours" >
-          <label for="relais-sub-1">Livraison sous 10 jours</label>
-        </li>
-        <li>
-          <input type="radio" id="relais-sub-2" name="delivery-mode-sub" value="relais-48h" >
-          <label for="relais-sub-2">Livraison sous 48h</label>
-        </li>
-      </ul>
-      <button onclick="promptValue()">ok</button>
+      <div class="delivery__content">
+        <input id="relais" name="delivery-mode" onclick="resetNestedChecked()" type="radio" value="relais">
+        <label for="relais">Point relais</label>
+        <div class="delivery__list">
+          <ul>
+            <li>
+              <input id="relais-sub-1" name="delivery-mode-sub" type="radio" value="relais-10jours">
+              <label for="relais-sub-1">Livraison sous 10 jours</label>
+            </li>
+            <li>
+              <input id="relais-sub-2" name="delivery-mode-sub" type="radio" value="relais-48h">
+              <label for="relais-sub-2">Livraison sous 48h</label>
+            </li>
+          </ul>
+          <button onclick="promptValue()">ok</button>
+        </div>
+      </div>
 
     </div>
     <script>
@@ -53,5 +81,7 @@
         console.log(inputValue.map(i => i.value));
       }
     </script>
+  </body>
+</html>
   </body>
 </html>
