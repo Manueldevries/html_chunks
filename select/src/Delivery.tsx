@@ -55,7 +55,28 @@ export default class Delivery extends React.Component {
   }
 
   public handeDeliveryModeClick = (index: number): void => {
+
     const deliveryModes: IDeliveryMode[] = this.state.deliveryModes.map((d: IDeliveryMode) => {
+
+      // console.log(`index: ${index}, d.index: ${d.index}`);
+      console.log('avant:', d);
+      const mode: IDeliveryMode = {
+        ...d,
+        isSelected: d.index === index
+      };
+
+      console.log('après:', mode);
+
+      return mode;
+    });
+
+    this.setState({ deliveryModes });
+  }
+
+  public handeDeliveryModeClick_ = (index: number): void => {
+
+    const deliveryModes: IDeliveryMode[] = this.state.deliveryModes.map((d: IDeliveryMode) => {
+      console.log(`index: ${index}, d.index: ${d.index}`);
 
       const mode: IDeliveryMode = {
         ...d,
@@ -79,7 +100,8 @@ export default class Delivery extends React.Component {
               return <RadioDeliveryMode
                 key={d.index}
                 deliveryMode={d}
-                handleClick={this.handeDeliveryModeClick} />
+                handleChange={this.handeDeliveryModeClick}
+              />
             })
           }
         </div>
