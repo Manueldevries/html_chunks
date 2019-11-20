@@ -4,7 +4,7 @@ import { IDeliveryMode } from './Delivery'
 interface IRadioDeliveryModeProps {
   deliveryMode: IDeliveryMode,
   handleChange: (index: number) => void;
-  handleReset: (name: string) => void;
+  handleReset: (name: number, parent: string) => void;
   // handleClickLog: (index: number) => void;
 }
 
@@ -26,7 +26,7 @@ const RadioDeliveryMode: React.FC<IRadioDeliveryModeProps> = props => {
               <li key={i.index}>
                 <input
                   id={`${props.deliveryMode.name}Delays_${i.index}`}
-                  onChange={() => props.handleReset(props.deliveryMode.name)}
+                  onChange={() => props.handleReset(i.index, props.deliveryMode.name)}
                   type="radio" name="delivery-mode-sub" />
                 <label htmlFor={`${props.deliveryMode.name}Delays_${i.index}`}>{i.label}</label>
               </li>
