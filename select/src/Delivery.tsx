@@ -61,14 +61,14 @@ export default class Delivery extends React.Component {
 
     const deliveryModes: IDeliveryMode[] = this.state.deliveryModes.map((d: IDeliveryMode) => {
 
-      console.log(`index: ${index}, d.index: ${d.index}`);
-      console.log('avant:', d);
+      // console.log(`index: ${index}, d.index: ${d.index}`);
+      // console.log('avant:', d);
       const mode: IDeliveryMode = {
         ...d,
         isSelected: d.index === index
       };
 
-      console.log('après:', mode);
+      // console.log('après:', mode);
 
       return mode;
       // return { ...d, isSelected: d.index === index };
@@ -78,10 +78,10 @@ export default class Delivery extends React.Component {
   }
 
   public handeDeliveryReset = (index: number, parent: number): void => {
-    console.log(`parent: ${this.state.deliveryModes[parent].name}`);
-    console.log(parent, index);
-    const delays = this.state.deliveryModes.map(i => {
-      console.log(i.delays[index]);
+    console.log(`parent: ${this.state.deliveryModes[parent].name}, isSelected:${this.state.deliveryModes[parent].isSelected}`);
+
+    const delays = this.state.deliveryModes[parent].delays.map(i => {
+      console.log(`index ${index} === ${i.index}, isSel ${i.isSelected}, ${i.label}`);
       // console.log({ ...i, isSelected: i.index === index });
     })
 
