@@ -8,6 +8,7 @@ export interface IDelays {
 }
 
 export interface IDeliveryMode {
+  name: string;
   isSelected: boolean;
   label: string;
   index: number;
@@ -25,6 +26,7 @@ export default class Delivery extends React.Component {
       index: 0,
       label: 'Domicile',
       isSelected: false,
+      name: 'domicile',
       delays: [{
         index: 0,
         label: 'Livraison sous 10 jours',
@@ -41,6 +43,7 @@ export default class Delivery extends React.Component {
     }, {
       index: 1,
       label: 'Point relais',
+      name: 'relais',
       isSelected: false,
       delays: [{
         index: 0,
@@ -58,7 +61,7 @@ export default class Delivery extends React.Component {
 
     const deliveryModes: IDeliveryMode[] = this.state.deliveryModes.map((d: IDeliveryMode) => {
 
-      // console.log(`index: ${index}, d.index: ${d.index}`);
+      console.log(`index: ${index}, d.index: ${d.index}`);
       console.log('avant:', d);
       const mode: IDeliveryMode = {
         ...d,
@@ -68,31 +71,22 @@ export default class Delivery extends React.Component {
       console.log('après:', mode);
 
       return mode;
+      // return { ...d, isSelected: d.index === index };
     });
 
     this.setState({ deliveryModes });
   }
 
-  public handeDeliveryModeClick_ = (index: number): void => {
+  public handeDeliveryReset = (name: string): void => {
+    const delays = this.state.deliveryModes.map(i => i.delays)
+    console.log({ ...delays });
 
-    const deliveryModes: IDeliveryMode[] = this.state.deliveryModes.map((d: IDeliveryMode) => {
-      console.log(`index: ${index}, d.index: ${d.index}`);
-
-      const mode: IDeliveryMode = {
-        ...d,
-        isSelected: d.index === index
-      };
-
-      return mode;
-    });
-
-    this.setState({ deliveryModes });
   }
 
   public render(): JSX.Element {
     return (
       <div className="delivery">
-        <h1>Livraison</h1>
+        <h1>Mode de livraison</h1>
 
         <div>
           {
@@ -101,6 +95,7 @@ export default class Delivery extends React.Component {
                 key={d.index}
                 deliveryMode={d}
                 handleChange={this.handeDeliveryModeClick}
+                handleReset={this.handeDeliveryReset}
               />
             })
           }
