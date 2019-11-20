@@ -77,10 +77,11 @@ export default class Delivery extends React.Component {
     this.setState({ deliveryModes });
   }
 
-  public handeDeliveryReset = (index: number, parent: string): void => {
-    console.log(index);
+  public handeDeliveryReset = (index: number, parent: number): void => {
+    console.log(`parent: ${this.state.deliveryModes[parent].name}`);
+    console.log(parent, index);
     const delays = this.state.deliveryModes.map(i => {
-      console.log(i.delays[index], parent);
+      console.log(i.delays[index]);
       // console.log({ ...i, isSelected: i.index === index });
     })
 
