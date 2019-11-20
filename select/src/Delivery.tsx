@@ -81,10 +81,18 @@ export default class Delivery extends React.Component {
     console.log(`parent: ${this.state.deliveryModes[parent].name}, isSelected:${this.state.deliveryModes[parent].isSelected}`);
 
     const delays = this.state.deliveryModes[parent].delays.map(i => {
-      console.log(`index ${index} === ${i.index}, isSel ${index === i.index}, ${i.label}`);
+      console.log(`index ${index} === ${i.index}, isSel ${index === i.index}, i.isSel ${i.isSelected}, ${i.label}`);
       // console.log({ ...i, isSelected: i.index === index });
+      const delays: IDelays = {
+        ...i,
+        isSelected: i.index === index
+      };
+      console.log({ delays });
+      return delays
+      console.info({ i });
     })
-
+    // https://stackoverflow.com/questions/43040721/how-to-update-nested-state-properties-in-react
+    // this.setState({ {...deliveryModes, delays: delays} });
   }
 
   public render(): JSX.Element {
