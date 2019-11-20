@@ -81,7 +81,7 @@ export default class Delivery extends React.Component {
     console.log(`parent: ${this.state.deliveryModes[parent].name}, isSelected:${this.state.deliveryModes[parent].isSelected}`);
 
     const delays = this.state.deliveryModes[parent].delays.map(i => {
-      console.log(`index ${index} === ${i.index}, isSel ${i.isSelected}, ${i.label}`);
+      console.log(`index ${index} === ${i.index}, isSel ${index === i.index}, ${i.label}`);
       // console.log({ ...i, isSelected: i.index === index });
     })
 
