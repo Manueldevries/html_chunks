@@ -83,16 +83,9 @@ export default class Delivery extends React.Component {
     var copyState = { ...this.state.deliveryModes }
     const copyState_ = this.state.deliveryModes
 
-    const delays = this.state.deliveryModes[parent].delays.map(i => {
-      // console.log(`index ${index} === ${i.index}, isSel ${index === i.index}, i.isSel ${i.isSelected}, ${i.label}`);
-
-      // const delays: IDelays = {
-      //   ...i,
-      //   isSelected: i.index === index
-      // };
-
-      // console.log(copyState[parent].delays[index].isSelected);
-      // console.log({ ...copyState_[parent].delays, isSelected: i.index === index });
+    const delays = copyState[parent].delays.map(i => {
+      console.log(`index ${index} === ${i.index}, isSel ${index === i.index}, i.isSel ${i.isSelected}, ${i.label}`);
+      i.isSelected = false
 
     });
     copyState[parent].delays[index].isSelected = true
