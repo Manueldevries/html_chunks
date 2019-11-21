@@ -77,22 +77,23 @@ export default class Delivery extends React.Component {
     this.setState({ deliveryModes });
   }
 
+  // https://stackoverflow.com/questions/43040721/how-to-update-nested-state-properties-in-react
+  // this.setState({ {...deliveryModes, delays: delays} });
+
   public handeDeliveryReset = (index: number, parent: number): void => {
     console.log(`parent: ${this.state.deliveryModes[parent].name}, isSelected:${this.state.deliveryModes[parent].isSelected}`);
 
     var copyState = { ...this.state.deliveryModes }
-    const copyState_ = this.state.deliveryModes
 
     const delays = copyState[parent].delays.map(i => {
       console.log(`index ${index} === ${i.index}, isSel ${index === i.index}, i.isSel ${i.isSelected}, ${i.label}`);
+      // reset all delays radio
       i.isSelected = false
 
     });
+    // change state delays.radio all deliveryModes state
     copyState[parent].delays[index].isSelected = true
-    console.log(copyState);
-
-    // https://stackoverflow.com/questions/43040721/how-to-update-nested-state-properties-in-react
-    // this.setState({ {...deliveryModes, delays: delays} });
+    console.log(`copyState:`, copyState);
   }
 
   public render(): JSX.Element {
