@@ -80,18 +80,24 @@ export default class Delivery extends React.Component {
   public handeDeliveryReset = (index: number, parent: number): void => {
     console.log(`parent: ${this.state.deliveryModes[parent].name}, isSelected:${this.state.deliveryModes[parent].isSelected}`);
 
+    var copyState = { ...this.state.deliveryModes }
+    const copyState_ = this.state.deliveryModes
+
     const delays = this.state.deliveryModes[parent].delays.map(i => {
-      console.log(`index ${index} === ${i.index}, isSel ${index === i.index}, i.isSel ${i.isSelected}, ${i.label}`);
-      // console.log({ ...i, isSelected: i.index === index });
-      const delays: IDelays = {
-        ...i,
-        isSelected: i.index === index
-      };
-      console.log(this.state.deliveryModes[parent]);
-      console.log({ delays });
-      return delays
-      // console.info({ i });
-    })
+      // console.log(`index ${index} === ${i.index}, isSel ${index === i.index}, i.isSel ${i.isSelected}, ${i.label}`);
+
+      // const delays: IDelays = {
+      //   ...i,
+      //   isSelected: i.index === index
+      // };
+
+      // console.log(copyState[parent].delays[index].isSelected);
+      // console.log({ ...copyState_[parent].delays, isSelected: i.index === index });
+
+    });
+    copyState[parent].delays[index].isSelected = true
+    console.log(copyState);
+
     // https://stackoverflow.com/questions/43040721/how-to-update-nested-state-properties-in-react
     // this.setState({ {...deliveryModes, delays: delays} });
   }
