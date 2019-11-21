@@ -85,15 +85,17 @@ export default class Delivery extends React.Component {
 
     var copyState = { ...this.state.deliveryModes }
 
-    const delays = copyState[parent].delays.map(i => {
+    // const reset = copyState[parent].delays.map(i => {
+    this.state.deliveryModes.map((i, x) => {
       console.log(`index ${index} === ${i.index}, isSel ${index === i.index}, i.isSel ${i.isSelected}, ${i.label}`);
-      // reset all delays radio
-      i.isSelected = false
-
+      // reset all deliveryModes delays isSelected key to false
+      i.delays[x].isSelected = false
     });
+
     // change state delays.radio all deliveryModes state
     copyState[parent].delays[index].isSelected = true
     console.log(`copyState:`, copyState);
+
   }
 
   public render(): JSX.Element {
