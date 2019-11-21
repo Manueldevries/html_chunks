@@ -87,9 +87,10 @@ export default class Delivery extends React.Component {
         ...i,
         isSelected: i.index === index
       };
+      console.log(this.state.deliveryModes[parent]);
       console.log({ delays });
       return delays
-      console.info({ i });
+      // console.info({ i });
     })
     // https://stackoverflow.com/questions/43040721/how-to-update-nested-state-properties-in-react
     // this.setState({ {...deliveryModes, delays: delays} });
