@@ -60,7 +60,7 @@ export default class Delivery extends React.Component {
   public handeDeliveryModeClick = (index: number): void => {
     // reset delays
     this.state.deliveryModes.map(i => {
-      i.delays.map(i => i.isSelected = false);
+      return i.delays.map(i => i.isSelected = false);
     });
 
     const deliveryModes: IDeliveryMode[] = this.state.deliveryModes.map((d: IDeliveryMode) => {
