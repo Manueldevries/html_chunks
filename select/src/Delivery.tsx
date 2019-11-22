@@ -78,7 +78,7 @@ export default class Delivery extends React.Component {
       return i.delays.map(i => i.isSelected = false);
     });
 
-    deliveryModes.map(i => {
+    deliveryModes.map(() => {
       return deliveryModes[parent].delays[index].isSelected = true;
     });
     // change state delays.radio all deliveryModes state

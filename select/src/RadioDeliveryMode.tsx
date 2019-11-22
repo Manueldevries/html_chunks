@@ -22,7 +22,6 @@ const RadioDeliveryMode: React.FC<IRadioDeliveryModeProps> = props => {
       <div className="delivery__list">
         <ul>
           {props.deliveryMode.delays.map((delays) => {
-            // i
             return (
               <li key={delays.index}>
                 <input
