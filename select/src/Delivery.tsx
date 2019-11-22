@@ -81,21 +81,22 @@ export default class Delivery extends React.Component {
   // this.setState({ {...deliveryModes, delays: delays} });
 
   public handeDeliveryReset = (index: number, parent: number): void => {
-    console.log(`parent: ${this.state.deliveryModes[parent].name}, isSelected:${this.state.deliveryModes[parent].isSelected}`);
+    // console.log(`parent: ${this.state.deliveryModes[parent].name}, isSelected:${this.state.deliveryModes[parent].isSelected}`);
 
-    var deliveryModes = { ...this.state.deliveryModes }
+    var deliveryModes = this.state.deliveryModes
 
     // const reset = deliveryModes[parent].delays.map(i => {
     const delays = this.state.deliveryModes.map((i, x) => {
       console.log(`index ${index} === ${i.index}, isSel ${index === i.index}, i.isSel ${i.isSelected}, ${i.label}`);
       // reset all deliveryModes delays isSelected key to false
-      i.delays[x].isSelected = false
+      // i.delays[x].isSelected = false
+      i.delays.map(i => i.isSelected = false)
       deliveryModes[parent].delays[index].isSelected = true;
     });
     console.log(`parent selected: ${deliveryModes[parent].isSelected}`);
     // change state delays.radio all deliveryModes state
     console.log(`deliveryModes:`, deliveryModes);
-    this.setState({ ...deliveryModes, delays: delays });
+    this.setState({ deliveryModes });
 
   }
 
