@@ -58,22 +58,16 @@ export default class Delivery extends React.Component {
   }
 
   public handeDeliveryModeClick = (index: number): void => {
-
-    const deliveryModes: IDeliveryMode[] = this.state.deliveryModes.map((d: IDeliveryMode) => {
-
-      // console.log(`index: ${index}, d.index: ${d.index}`);
-      // console.log('avant:', d);
-      const mode: IDeliveryMode = {
-        ...d,
-        isSelected: d.index === index
-      };
-
-      // console.log('après:', mode);
-
-      return mode;
-      // return { ...d, isSelected: d.index === index };
+    // reset delays
+    this.state.deliveryModes.map(i => {
+      i.delays.map(i => i.isSelected = false);
     });
 
+    const deliveryModes: IDeliveryMode[] = this.state.deliveryModes.map((d: IDeliveryMode) => {
+      // const mode: IDeliveryMode = { ...d, isSelected: d.index === index };
+      // return mode;
+      return { ...d, isSelected: d.index === index };
+    });
     this.setState({ deliveryModes });
   }
 
@@ -81,14 +75,12 @@ export default class Delivery extends React.Component {
     const deliveryModes = this.state.deliveryModes
 
     deliveryModes.map(i => {
-      i.delays.map(i => i.isSelected = false)
+      // reset delays
+      i.delays.map(i => i.isSelected = false);
       deliveryModes[parent].delays[index].isSelected = true;
     });
-
-    console.log(`parent selected: ${deliveryModes[parent].isSelected}`);
-    console.log(`deliveryModes:`, deliveryModes);
     // change state delays.radio all deliveryModes state
-    this.setState({ deliveryModes });
+    deliveryModes[parent].isSelected && this.setState({ deliveryModes });
   }
 
   public render(): JSX.Element {

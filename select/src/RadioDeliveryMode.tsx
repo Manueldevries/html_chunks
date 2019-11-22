@@ -21,11 +21,13 @@ const RadioDeliveryMode: React.FC<IRadioDeliveryModeProps> = props => {
       <label htmlFor={id}>{props.deliveryMode.label}</label>
       <div className="delivery__list">
         <ul>
-          {props.deliveryMode.delays.map(i => {
+          {props.deliveryMode.delays.map((i, x) => {
+            console.log(`parentChecked? ${props.deliveryMode.isSelected}`);
             return (
               <li key={i.index}>
                 <input
                   id={`${props.deliveryMode.name}Delays_${i.index}`}
+                  checked={i.isSelected}
                   onChange={() => props.handleReset(i.index, props.deliveryMode.index)}
                   type="radio" name="delivery-mode-sub" />
                 <label htmlFor={`${props.deliveryMode.name}Delays_${i.index}`}>{i.label}</label>
