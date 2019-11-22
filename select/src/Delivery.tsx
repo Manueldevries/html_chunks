@@ -71,7 +71,7 @@ export default class Delivery extends React.Component {
     this.setState({ deliveryModes });
   }
 
-  public handeDeliveryReset = (index: number, parent: number): void => {
+  public handeDeliveryDelays = (index: number, parent: number): void => {
     const deliveryModes = this.state.deliveryModes
     // reset delays
     this.state.deliveryModes.map(i => {
@@ -97,7 +97,7 @@ export default class Delivery extends React.Component {
                 key={d.index}
                 deliveryMode={d}
                 handleChange={this.handeDeliveryModeClick}
-                handleReset={this.handeDeliveryReset}
+                handleReset={this.handeDeliveryDelays}
               />
             })
           }
