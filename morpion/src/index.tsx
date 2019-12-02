@@ -1,11 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import Square from './Square';
 
-class Board extends React.Component {
+interface IBoardProps {
+
+}
+interface IBoardState {
+  squares: null[] | string[];
+}
+
+class Board extends React.Component<IBoardProps, IBoardState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null)
+    }
+  }
+  handleClick(i: number) {
+    console.log(i);
+  }
   renderSquare(i: number) {
-    return <Square value={i} />;
+    return <Square
+      value={this.state.squares[i]}
+      onClick={() => { this.handleClick(i) }}
+    />;
+  }
+
+  componentDidMount() {
+    console.log(this.state.squares);
   }
 
   render() {
@@ -56,3 +79,8 @@ ReactDOM.render(
   <Game />,
   document.getElementById('root')
 );
+
+/**
+ * React doc morpion exo → understand immutability and why it matters
+ * https://fr.reactjs.org/tutorial/tutorial.html#completing-the-game
+ */

@@ -1,7 +1,8 @@
 import React from 'react'
 
 interface ISquareProps {
-  value: number
+  value: any
+  onClick: () => void;
 }
 
 interface ISquareState {
@@ -9,19 +10,14 @@ interface ISquareState {
 }
 
 class Square extends React.Component<ISquareProps, ISquareState> {
-  constructor(props: ISquareProps) {
-    super(props)
-    this.state = {
-      value: null
-    }
-  }
+
 
   render() {
     return (
       <button className="square" onClick={(): void =>
-        this.setState({ value: 'X' })
+        this.props.onClick()
       }>
-        {this.state.value}
+        {this.props.value}
       </button>
     );
   }
