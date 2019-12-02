@@ -17,10 +17,15 @@ class Board extends React.Component<IBoardProps, IBoardState> {
       squares: Array(9).fill(null)
     }
   }
-  handleClick(i: number) {
-    const squares = this.state.squares.slice()
-    squares[i] = 'x'
-    this.setState({ squares: squares })
+  handleClick(i: any) {
+    // const squares = this.state.squares.slice()
+    // squares[i] = 'x'
+    // this.setState({ squares: squares })
+
+    const squares = this.state.squares
+    squares.map((it: any) => console.log(it))
+    // return squares
+    // return {...squares}
   }
   renderSquare(i: number) {
     return <Square
@@ -85,4 +90,4 @@ ReactDOM.render(
 /**
  * React doc morpion exo → understand immutability and why it matters
  * https://fr.reactjs.org/tutorial/tutorial.html#completing-the-game
- */
+*/

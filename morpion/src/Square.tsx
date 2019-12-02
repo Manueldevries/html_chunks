@@ -2,7 +2,8 @@ import React from 'react'
 
 interface ISquareProps {
   value: any
-  onClick: () => void;
+  // onClick: () => void;
+  onClick: Function;
 }
 
 interface ISquareState {
