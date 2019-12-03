@@ -6,8 +6,10 @@ import Square from './Square';
 interface IBoardProps {
 
 }
+
 interface IBoardState {
-  squares: null[] | string[];
+  // squares: any[];
+  squares: null[] | string[] | (string | null)[];
 }
 
 class Board extends React.Component<IBoardProps, IBoardState> {
@@ -17,19 +19,13 @@ class Board extends React.Component<IBoardProps, IBoardState> {
       squares: Array(9).fill(null)
     }
   }
-  handleClick(i: number) {
-    // const squares = this.state.squares.slice()
-    // squares[i] = 'x'
-    // this.setState({ squares: squares })
 
-    // const squares: any[] = this.state.squares
-    // const squarcp = [...squares]
-    // const squarcp = { ...squares, [i]: 'x' }
-    const squarcp: any[] = [...this.state.squares]
+  handleClick(i: number) {
+    const squarcp = [...this.state.squares]
     squarcp[i] = 'x'
+    console.log(squarcp);
 
     this.setState({ squares: squarcp })
-
 
   }
 
@@ -38,10 +34,6 @@ class Board extends React.Component<IBoardProps, IBoardState> {
       value={this.state.squares[i]}
       onClick={() => { this.handleClick(i) }}
     />;
-  }
-
-  componentDidMount() {
-    console.log(this.state.squares);
   }
 
   render() {
