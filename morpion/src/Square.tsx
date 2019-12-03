@@ -2,20 +2,20 @@ import React from 'react'
 
 interface ISquareProps {
   value: any
-  // onClick: () => void;
-  onClick: Function;
+  onClick: () => void;
 }
 
-interface ISquareState {
-  value: string | null
-}
+// interface ISquareState {
+//   value: string | null
+// }
 
-class Square extends React.Component<ISquareProps, ISquareState> {
+// class Square extends React.Component<ISquareProps, ISquareState> {
+class Square extends React.Component<ISquareProps> {
 
 
   render() {
     return (
-      <button className="square" onClick={(): void =>
+      <button className="square" onClick={() =>
         this.props.onClick()
       }>
         {this.props.value}

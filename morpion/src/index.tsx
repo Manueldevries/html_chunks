@@ -17,16 +17,19 @@ class Board extends React.Component<IBoardProps, IBoardState> {
       squares: Array(9).fill(null)
     }
   }
-  handleClick(i: any) {
+  handleClick(i: number) {
     // const squares = this.state.squares.slice()
     // squares[i] = 'x'
     // this.setState({ squares: squares })
 
-    const squares = this.state.squares
-    squares.map((it: any) => console.log(it))
+    const squares: any[] = this.state.squares
+    console.log(typeof squares)
+    console.log(Array.isArray(squares))
+    squares.map((square) => square)
     // return squares
     // return {...squares}
   }
+
   renderSquare(i: number) {
     return <Square
       value={this.state.squares[i]}
