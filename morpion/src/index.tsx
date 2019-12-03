@@ -4,16 +4,17 @@ import './index.scss';
 import Square from './Square';
 
 interface IBoardProps {
-
+  // handleClick: (i: number) => void
+  // renderSquare?: (i: number) => JSX.Element
 }
 
 interface IBoardState {
-  // squares: any[];
-  squares: null[] | string[] | (string | null)[];
+  // squares: null[] | string[];
+  squares: (string | null)[];
 }
 
 class Board extends React.Component<IBoardProps, IBoardState> {
-  constructor(props: any) {
+  constructor(props: IBoardState) {
     super(props);
     this.state = {
       squares: Array(9).fill(null)
