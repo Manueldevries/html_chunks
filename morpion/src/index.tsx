@@ -23,11 +23,21 @@ class Board extends React.Component<IBoardProps, IBoardState> {
     // this.setState({ squares: squares })
 
     const squares: any[] = this.state.squares
-    console.log(typeof squares)
-    console.log(Array.isArray(squares))
-    squares.map((square) => square)
+
+    squares.map(
+      (square: any[]) => {
+        const squarcp = { ...squares, [i]: 'x' }
+        console.log(squarcp);
+        return squarcp
+      }
+    )
+    this.setState({ squares: squares })
     // return squares
-    // return {...squares}
+
+    // squares[i] = 'x'
+    // this.setState({ squares: squares })
+
+
   }
 
   renderSquare(i: number) {
