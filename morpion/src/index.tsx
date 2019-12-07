@@ -3,30 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import Square from './Square';
 
-interface IBoardProps {
-  // handleClick: (i: number) => void
-  // renderSquare?: (i: number) => JSX.Element
-}
-
 interface IBoardState {
-  // squares: null[] | string[];
   squares: (string | null)[];
+  xIsNext: boolean
 }
 
-class Board extends React.Component<IBoardProps, IBoardState> {
+class Board extends React.Component<{}, IBoardState> {
   constructor(props: IBoardState) {
     super(props);
     this.state = {
-      squares: Array(9).fill(null)
+      squares: Array(9).fill(null),
+      xIsNext: true
     }
   }
 
   handleClick(i: number) {
     const squarcp = [...this.state.squares]
-    squarcp[i] = 'x'
-    console.log(squarcp);
-
-    this.setState({ squares: squarcp })
+    squarcp[i] = (this.state.xIsNext && 'x') || 'o'
+    //
+    this.setState({ squares: squarcp, xIsNext: !this.state.xIsNext })
 
   }
 
@@ -38,7 +33,9 @@ class Board extends React.Component<IBoardProps, IBoardState> {
   }
 
   render() {
-    const status = 'Next player: X';
+    // const status = 'Next player: X';
+    const status = `Prochain joueur : ${this.state.xIsNext ? 'X' : 'O'}`;
+    calculateWinner(this.state.squares);
 
     return (
       <div>
@@ -90,3 +87,51 @@ ReactDOM.render(
  * React doc morpion exo → understand immutability and why it matters
  * https://fr.reactjs.org/tutorial/tutorial.html#completing-the-game
 */
+
+function calculateWinner(squares: (string | null)[]) {
+  const lines = [
+    [0, 1, 2],
+    // X, X, X
+    // 0, O, O
+    // 0, O, O
+    [3, 4, 5],
+    // 0, O, O
+    // X, X, X
+    // 0, O, O
+    [6, 7, 8],
+    // 0, O, O
+    // 0, O, O
+    // X, X, X
+    [0, 3, 6],
+    // X, O, O
+    // X, O, O
+    // X, O, O
+    [1, 4, 7],
+    // O, X, O
+    // O, X, O
+    // O, X, O
+    [2, 5, 8],
+    // O, O, X
+    // O, O, X
+    // O, O, X
+    [0, 4, 8],
+    // O, O, X
+    // O, X, O
+    // X, O, O
+    [2, 4, 6],
+    // O, O, X
+    // O, X, O
+    // X, O, O
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    console.log(`a: ${a}, b: ${b}, c:${c}.`);
+    console.log(`squares[a]: ${squares[a]}, squares[b]: ${squares[b]}, squares[c]:${squares[c]}.`);
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      console.log(`____________winner____________`);
+      return squares[a];
+    }
+  }
+  console.log(`____________nowin____________`);
+  return null;
+}
