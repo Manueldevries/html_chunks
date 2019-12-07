@@ -123,15 +123,27 @@ function calculateWinner(squares: (string | null)[]) {
     // O, X, O
     // X, O, O
   ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
+  // for (let i = 0; i < lines.length; i++) {
+  //   const [a, b, c] = lines[i];
+  //   console.log(`a: ${a}, b: ${b}, c:${c}.`);
+  //   console.log(`squares[a]: ${squares[a]}, squares[b]: ${squares[b]}, squares[c]:${squares[c]}.`);
+  //   if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+  //     console.log(`____________winner____________`);
+  //     return squares[a];
+  //   }
+  // }
+  // console.log(`____________nowin____________`);
+  // return null;
+  lines.map((line) => {
+    const [a, b, c] = line;
     console.log(`a: ${a}, b: ${b}, c:${c}.`);
     console.log(`squares[a]: ${squares[a]}, squares[b]: ${squares[b]}, squares[c]:${squares[c]}.`);
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       console.log(`____________winner____________`);
       return squares[a];
     }
-  }
+    return null
+  })
   console.log(`____________nowin____________`);
   return null;
 }
