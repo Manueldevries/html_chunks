@@ -33,8 +33,9 @@ class Board extends React.Component<{}, IBoardState> {
   }
 
   render() {
-    // const status = 'Next player: X';
     const status = `Prochain joueur : ${this.state.xIsNext ? 'X' : 'O'}`;
+    const winner = calculateWinner(this.state.squares);
+    console.log(winner);
     calculateWinner(this.state.squares);
 
     return (
@@ -123,27 +124,19 @@ function calculateWinner(squares: (string | null)[]) {
     // O, X, O
     // X, O, O
   ];
-  // for (let i = 0; i < lines.length; i++) {
-  //   const [a, b, c] = lines[i];
-  //   console.log(`a: ${a}, b: ${b}, c:${c}.`);
-  //   console.log(`squares[a]: ${squares[a]}, squares[b]: ${squares[b]}, squares[c]:${squares[c]}.`);
-  //   if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-  //     console.log(`____________winner____________`);
-  //     return squares[a];
-  //   }
-  // }
-  // console.log(`____________nowin____________`);
-  // return null;
+
   lines.map((line) => {
     const [a, b, c] = line;
-    console.log(`a: ${a}, b: ${b}, c:${c}.`);
-    console.log(`squares[a]: ${squares[a]}, squares[b]: ${squares[b]}, squares[c]:${squares[c]}.`);
+    let gagnant: (string | null) = squares[a]
+    // console.log(`a: ${a}, b: ${b}, c:${c}.`);
+    // console.log(`squares[a]: ${squares[a]}, squares[b]: ${squares[b]}, squares[c]:${squares[c]}.`);
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      console.log(`____________winner____________`);
+      // console.log(`le joueur: ${squares[a]} à gagné 🏆`);
+      console.log(`le joueur: ${gagnant !== null && gagnant.toUpperCase()} à gagné 🏆`);
       return squares[a];
     }
-    return null
+    return null; // TS array-callback-return
   })
-  console.log(`____________nowin____________`);
+  // console.log(`____________nowin____________`);
   return null;
 }
