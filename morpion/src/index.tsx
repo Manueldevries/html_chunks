@@ -38,7 +38,7 @@ class Board extends React.Component<{}, IBoardState> {
     // const status = `Prochain joueur : ${this.state.xIsNext ? 'X' : 'O'}.`;
     let status;
     const winner = calculateWinner(this.state.squares);
-    console.log(winner);
+    // console.log(winner);
     if (winner !== undefined && winner) {
       status = winner + ' a gagné';
     } else {
@@ -98,7 +98,7 @@ ReactDOM.render(
  * React doc morpion exo → understand immutability and why it matters
  * https://fr.reactjs.org/tutorial/tutorial.html#completing-the-game
 */
-function calculateWinner(squares: any) {
+function calculateWinner(squares: (string | null)[]) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -129,5 +129,5 @@ function calculateWinner(squares: any) {
     return null;
   })
 
-  return win + 'yolo';
+  return win;
 }
